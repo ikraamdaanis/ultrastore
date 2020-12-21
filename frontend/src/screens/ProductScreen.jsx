@@ -12,7 +12,7 @@ const ProductScreen = ({ match }) => {
       setProduct(data)
     }
     fetchProduct()
-  }, [match.params.id])
+  }, [match])
 
   return (
     product && (
@@ -27,7 +27,7 @@ const ProductScreen = ({ match }) => {
           <Col md={3}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h3>{product.name}</h3>
+                <h3 style={{ fontSize: '28px' }}>{product.name}</h3>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Rating
