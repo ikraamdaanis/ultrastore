@@ -1,28 +1,44 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
+import {
+  listProductDetails,
+  clearProductDetails,
+} from '../actions/productActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const ProductScreen = ({ match }) => {
-  const [product, setProduct] = useState(null)
+  const dispatch = useDispatch()
+  const productDetails = useSelector(state => state.productDetails)
+  const { loading, error, product } = productDetails
   useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`)
-      setProduct(data)
+    dispatch(listProductDetails(match.params.id))
+
+    return () => {
+      dispatch(clearProductDetails())
     }
-    fetchProduct()
-  }, [match])
+  }, [dispatch, match])
 
   return (
-    product && (
-      <>
-        <Link className='btn btn-dark my-3' to='/'>
-          Go Back
-        </Link>
+    <>
+      <Link className='btn btn-dark my-3' to='/'>
+        Go Back
+      </Link>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>{error}</Message>
+      ) : (
         <Row>
           <Col md={6}>
-            <Image src={product.image} alt={product.name} fluid />
+            <Image
+              src={product.image}
+              alt={product.name}
+              style={{ width: '100%' }}
+            />
           </Col>
           <Col md={3}>
             <ListGroup variant='flush'>
@@ -31,7 +47,7 @@ const ProductScreen = ({ match }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Rating
-                  value={product.rating}
+                  value={product.rating || 0}
                   text={`${product.numReviews} ${
                     product.numReviews > 1 || product.numReviews < 1
                       ? 'reviews'
@@ -60,7 +76,9 @@ const ProductScreen = ({ match }) => {
                   <Row>
                     <Col>Status:</Col>
                     <Col>
-                      {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                      {product && product.countInStock > 0
+                        ? 'In Stock'
+                        : 'Out of Stock'}
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -79,8 +97,8 @@ const ProductScreen = ({ match }) => {
             </Card>
           </Col>
         </Row>
-      </>
-    )
+      )}
+    </>
   )
 }
 
