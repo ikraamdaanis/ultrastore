@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
-    "client": "npm start --prefix frontend",
+    "client": "BROWSER=none npm start --prefix frontend",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
@@ -29,6 +29,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8"
   },
   "devDependencies": {
