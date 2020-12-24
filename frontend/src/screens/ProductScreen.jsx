@@ -64,64 +64,58 @@ const ProductScreen = ({ history, match }) => {
               <ListGroup.Item>
                 Description: {product.description}
               </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Price:</Col>
+                  <Col>
+                    <strong>${product.price}</strong>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Status:</Col>
+                  <Col>
+                    {product && product.countInStock > 0
+                      ? 'In Stock'
+                      : 'Out of Stock'}
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              {product.countInStock > 0 && (
+                <ListGroup.Item>
+                  <Row>
+                    <Col>Qty</Col>
+                    <Col>
+                      <Form.Control
+                        className='selectForm'
+                        as='select'
+                        value={qty}
+                        onChange={e => setQty(e.target.value)}
+                      >
+                        {[...Array(product.countInStock).keys()]
+                          .slice(0, 10)
+                          .map(x => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                      </Form.Control>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              )}
+              <ListGroup.Item>
+                <Button
+                  onClick={addToCartHandler}
+                  className='btn-block'
+                  type='button'
+                  disabled={product.countInStock === 0}
+                >
+                  {product.countInStock === 0 ? 'Out of Stock' : 'Add to Cart'}
+                </Button>
+              </ListGroup.Item>
             </ListGroup>
-            <Card>
-              <ListGroup variant='flush'>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Price:</Col>
-                    <Col>
-                      <strong>${product.price}</strong>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Status:</Col>
-                    <Col>
-                      {product && product.countInStock > 0
-                        ? 'In Stock'
-                        : 'Out of Stock'}
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Qty</Col>
-                      <Col>
-                        <Form.Control
-                          className='selectForm'
-                          as='select'
-                          value={qty}
-                          onChange={e => setQty(e.target.value)}
-                        >
-                          {[...Array(product.countInStock).keys()]
-                            .slice(0, 10)
-                            .map(x => (
-                              <option key={x + 1} value={x + 1}>
-                                {x + 1}
-                              </option>
-                            ))}
-                        </Form.Control>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-                )}
-                <ListGroup.Item>
-                  <Button
-                    onClick={addToCartHandler}
-                    className='btn-block'
-                    type='button'
-                    disabled={product.countInStock === 0}
-                  >
-                    {product.countInStock === 0
-                      ? 'Out of Stock'
-                      : 'Add to Cart'}
-                  </Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card>
           </Col>
         </Row>
       )}
