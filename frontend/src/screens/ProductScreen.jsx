@@ -45,7 +45,7 @@ const ProductScreen = ({ history, match }) => {
               style={{ width: '100%' }}
             />
           </Col>
-          <Col md={3} className='product-page-section'>
+          <Col md={6} className='product-page-section'>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h3 style={{ fontSize: '28px' }}>{product.name}</h3>
@@ -65,8 +65,6 @@ const ProductScreen = ({ history, match }) => {
                 Description: {product.description}
               </ListGroup.Item>
             </ListGroup>
-          </Col>
-          <Col md={3} className='product-page-section'>
             <Card>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
