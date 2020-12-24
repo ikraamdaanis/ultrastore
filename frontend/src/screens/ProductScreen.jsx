@@ -7,6 +7,7 @@ import {
   listProductDetails,
   clearProductDetails,
 } from '../actions/productActions'
+import { addToCart } from '../actions/cartActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
@@ -24,6 +25,7 @@ const ProductScreen = ({ history, match }) => {
   }, [dispatch, match])
 
   const addToCartHandler = () => {
+    dispatch(addToCart(product._id, qty))
     history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
