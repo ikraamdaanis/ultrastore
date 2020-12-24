@@ -38,14 +38,14 @@ const ProductScreen = ({ history, match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
-          <Col md={6}>
+          <Col md={6} className='product-page-section'>
             <Image
               src={product.image}
               alt={product.name}
               style={{ width: '100%' }}
             />
           </Col>
-          <Col md={3}>
+          <Col md={3} className='product-page-section'>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h3 style={{ fontSize: '28px' }}>{product.name}</h3>
@@ -66,7 +66,7 @@ const ProductScreen = ({ history, match }) => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={3}>
+          <Col md={3} className='product-page-section'>
             <Card>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
@@ -93,6 +93,7 @@ const ProductScreen = ({ history, match }) => {
                       <Col>Qty</Col>
                       <Col>
                         <Form.Control
+                          className='selectForm'
                           as='select'
                           value={qty}
                           onChange={e => setQty(e.target.value)}
