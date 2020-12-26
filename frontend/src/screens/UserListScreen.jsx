@@ -51,42 +51,35 @@ const UserListScreen = ({ history }) => {
             </tr>
           </thead>
           <tbody>
-            {users.map(user => {
-              return (
-                !user.isAdmin && (
-                  <tr key={user._id}>
-                    <td>{user._id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>
-                      {user.isAdmin ? (
-                        <i
-                          className='fas fa-check'
-                          style={{ color: 'green' }}
-                        />
-                      ) : (
-                        <i className='fas fa-times' style={{ color: 'red' }} />
-                      )}
-                    </td>
-                    <td>
-                      <LinkContainer to={`/admin/user/${user._id}/edit`}>
-                        <Button className='btn-sm mr'>
-                          <i className='fas fa-edit' />
-                        </Button>
-                      </LinkContainer>
-                      <Button
-                        variant='danger'
-                        className='btn-sm '
-                        onClick={() => deleteHandler(user._id)}
-                      >
-                        {' '}
-                        <i className='fas fa-trash' />
-                      </Button>
-                    </td>
-                  </tr>
-                )
-              )
-            })}
+            {users.map(user => (
+              <tr key={user._id}>
+                <td>{user._id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  {user.isAdmin ? (
+                    <i className='fas fa-check' style={{ color: 'green' }} />
+                  ) : (
+                    <i className='fas fa-times' style={{ color: 'red' }} />
+                  )}
+                </td>
+                <td>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                    <Button className='btn-sm mr'>
+                      <i className='fas fa-edit' />
+                    </Button>
+                  </LinkContainer>
+                  <Button
+                    variant='danger'
+                    className='btn-sm '
+                    onClick={() => deleteHandler(user._id)}
+                  >
+                    {' '}
+                    <i className='fas fa-trash' />
+                  </Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       )}
