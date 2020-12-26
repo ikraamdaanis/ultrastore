@@ -34,6 +34,8 @@ const App = () => {
         </Container>
       </main>
       <Footer />
+      <div class='overflowTop'></div>
+      <div class='overflowBottom'></div>
     </Router>
   )
 }

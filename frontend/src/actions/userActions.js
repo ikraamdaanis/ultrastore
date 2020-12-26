@@ -166,8 +166,6 @@ export const listUsers = () => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/users`, config)
 
     dispatch({ type: USER_LIST_SUCCESS, payload: data })
-
-    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_LIST_FAIL,
@@ -192,7 +190,7 @@ export const deleteUser = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-
+    // eslint-disable-next-line
     const { data } = await axios.delete(`/api/users/${id}`, config)
 
     dispatch({ type: USER_DELETE_SUCCESS })
