@@ -13,7 +13,7 @@ const PaymentScreen = ({ history }) => {
     history.push('/shipping')
   }
 
-  const [paymentMethod, setPaymentMethod] = useState('Paypal')
+  const [paymentMethod, setPaymentMethod] = useState('PayPal')
   const dispatch = useDispatch()
 
   const submitHandler = e => {
