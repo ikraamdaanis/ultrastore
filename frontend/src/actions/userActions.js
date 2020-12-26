@@ -190,8 +190,8 @@ export const deleteUser = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    // eslint-disable-next-line
-    const { data } = await axios.delete(`/api/users/${id}`, config)
+
+    await axios.delete(`/api/users/${id}`, config)
 
     dispatch({ type: USER_DELETE_SUCCESS })
   } catch (error) {
