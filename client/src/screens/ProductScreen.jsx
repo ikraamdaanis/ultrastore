@@ -28,14 +28,13 @@ export const ProductScreen = ({ match }) => {
                 text={`${product.numReviews}${product.numReviews === 1 ? ` review` : ' reviews'}`}
               />
             </ListGroup.Item>
-            <ListGroup.Item>Price: £{product.price}</ListGroup.Item>
             <ListGroup.Item>{product.description}</ListGroup.Item>
 
             <ListGroup.Item>
               <Row>
                 <Col>Price:</Col>
                 <Col>
-                  <strong>£{product.price}</strong>
+                  <strong>£{product.price.toFixed(2)}</strong>
                 </Col>
               </Row>
             </ListGroup.Item>
