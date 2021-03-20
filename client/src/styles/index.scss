@@ -24,6 +24,10 @@ a {
   color: unset;
 }
 
+i {
+  margin-right: 5px;
+}
+
 input {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -39,4 +43,8 @@ button {
 
 .hide {
   display: none !important;
+}
+
+main {
+  min-height: 80vh;
 }
