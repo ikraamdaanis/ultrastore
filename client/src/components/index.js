@@ -1,4 +1,5 @@
 export { Header } from './Header'
 export { Footer } from './Footer'
+export { Loader } from './Loader'
 export { Product } from './Product'
 export { Rating } from './Rating'
