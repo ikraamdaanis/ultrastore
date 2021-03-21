@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     _id: '2b7d926e-f145-4ef1-b686-be57f7112b0d',
     rating: 5,
@@ -112,5 +112,3 @@ const products = [
     reviews: [],
   },
 ]
-
-module.exports = products

@@ -1,8 +1,9 @@
 {
-  "name": "ultratech",
+  "name": "ultrastore",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "server": "nodemon server/server",
     "client": "npm start --prefix client",
