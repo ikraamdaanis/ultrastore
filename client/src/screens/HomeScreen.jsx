@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { Product } from '../components'
-// import PropTypes from 'prop-types'
-import products from '../products'
+import axios from 'axios'
 
 export const HomeScreen = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get('/api/products')
+      setProducts(data)
+    }
+    fetchProducts()
+  }, [])
+
   return (
     <>
       <h1>Latest Products</h1>
@@ -18,7 +27,3 @@ export const HomeScreen = () => {
     </>
   )
 }
-
-// HomeScreen.propTypes = {
-
-// }
