@@ -1,6 +1,5 @@
 export const products = [
   {
-    _id: '2b7d926e-f145-4ef1-b686-be57f7112b0d',
     rating: 5,
     numReviews: 1,
     price: 799,
@@ -14,7 +13,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: '97ebfaf6-081c-49e2-aaa4-a39a2f843804',
     rating: 4.5,
     numReviews: 2,
     price: 1999,
@@ -28,7 +26,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: 'e242f1eb-23d4-4b7c-aae1-279eb06650f2',
     rating: 4.3,
     numReviews: 10,
     price: 899,
@@ -42,7 +39,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: 'baf6dcad-41b8-4354-b324-7a9fe2eb33ad',
     rating: 5,
     numReviews: 1,
     price: 1059.99,
@@ -56,7 +52,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: 'f197af3a-ff63-4981-8ad4-aaad4e34bf56',
     rating: 4,
     numReviews: 6,
     price: 349.99,
@@ -70,7 +65,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: 'd5fe4191-b605-4cc6-9dec-c8f8af1ec8a0',
     rating: 4.8,
     numReviews: 12,
     price: 249,
@@ -84,7 +78,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: 'ca515c58-0a7c-49c7-943b-a9b1b0212424',
     rating: 5,
     numReviews: 12,
     price: 429,
@@ -98,7 +91,6 @@ export const products = [
     reviews: [],
   },
   {
-    _id: 'd95a5431-d9f1-4e68-8a59-51285cb7c549',
     rating: 3,
     numReviews: 3,
     price: 299.99,
