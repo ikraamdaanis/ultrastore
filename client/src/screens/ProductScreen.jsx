@@ -41,7 +41,6 @@ export const ProductScreen = ({ match }) => {
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>{product.description}</ListGroup.Item>
-
                 <ListGroup.Item>
                   <Row>
                     <Col>Price:</Col>
