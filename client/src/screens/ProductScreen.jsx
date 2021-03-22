@@ -17,7 +17,7 @@ export const ProductScreen = ({ match, history }) => {
     return () => dispatch(clearProductDetails())
   }, [dispatch, match.params.id])
 
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
