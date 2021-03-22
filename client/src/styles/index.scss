@@ -1,3 +1,6 @@
+@import 'homeScreen';
+@import 'productScreen';
+
 * {
   margin: 0;
   padding: 0;
@@ -51,8 +54,4 @@ button {
 
 main {
   min-height: 80vh;
-}
-
-.home-screen-price {
-  margin-top: 1rem;
 }

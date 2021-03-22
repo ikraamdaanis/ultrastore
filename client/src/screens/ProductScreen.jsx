@@ -66,7 +66,7 @@ export const ProductScreen = ({ match, history }) => {
                 </Row>
               </ListGroup.Item>
               {product.countInStock > 0 && (
-                <ListGroup.Item>
+                <ListGroup.Item className='qty-select'>
                   <Row>
                     <Col>Qty:</Col>
                     <Col>
