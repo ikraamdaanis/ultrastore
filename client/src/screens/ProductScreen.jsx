@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Form } from 'react-bootstrap'
 import { Loader, Message, Rating } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearProductDetails, listProductDetails } from '../redux'
+import { addToCart, clearProductDetails, listProductDetails } from '../redux'
 
 export const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch()
 
   const productDetails = useSelector(state => state.productDetails)
   const { loading, error, product } = productDetails
+
+  const cart = useSelector(state => state.cart)
+  const { cartItems } = cart
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id))
@@ -19,8 +22,14 @@ export const ProductScreen = ({ match, history }) => {
 
   const [qty, setQty] = useState(1)
 
+  useEffect(() => {
+    const currentItem = cartItems.find(cartItem => cartItem.product === match.params.id)
+    currentItem && setQty(currentItem.qty)
+  }, [cartItems, match.params.id])
+
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`)
+    dispatch(addToCart(product._id, qty))
+    history.push('/cart')
   }
 
   return (
@@ -73,7 +82,7 @@ export const ProductScreen = ({ match, history }) => {
                       <Form.Control
                         as='select'
                         value={qty}
-                        onChange={({ target }) => setQty(target.value)}
+                        onChange={({ target }) => setQty(+target.value)}
                       >
                         {[...Array(product.countInStock).keys()].slice(0, 10).map(item => (
                           <option key={item + 1}>{item + 1}</option>

@@ -17,7 +17,7 @@ export const Rating = ({ value, text, color = '#f8e825' }) => {
           }
         ></i>
       ))}
-      <span>{text}</span>
+      <span> {text}</span>
     </>
   )
 }
