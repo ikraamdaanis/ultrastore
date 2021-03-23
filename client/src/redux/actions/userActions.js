@@ -6,7 +6,7 @@ import {
 } from '../constants/userConstants'
 import axios from 'axios'
 
-export const userLogin = (email, password) => async dispatch => {
+export const login = (email, password) => async dispatch => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST })
 
@@ -16,7 +16,7 @@ export const userLogin = (email, password) => async dispatch => {
       },
     }
 
-    const { data } = await axios.post('/users/login', { email, password }, config)
+    const { data } = await axios.post('/api/users/login', { email, password, config })
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
 
@@ -30,7 +30,7 @@ export const userLogin = (email, password) => async dispatch => {
   }
 }
 
-export const userLogout = () => dispatch => {
+export const logout = () => dispatch => {
   dispatch({ type: USER_LOGOUT })
   localStorage.removeItem('userInfo')
 }

@@ -1,5 +1,6 @@
 export { Header } from './Header'
 export { Footer } from './Footer'
+export { FormContainer } from './FormContainer'
 export { Loader } from './Loader'
 export { Message } from './Message'
 export { Product } from './Product'
