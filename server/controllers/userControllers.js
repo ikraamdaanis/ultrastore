@@ -55,8 +55,8 @@ export const registerUser = asyncHandler(async (req, res) => {
 // @route GET api/users/profile
 // @access Private
 export const getUserProfile = asyncHandler(async (req, res) => {
+  const { user } = req
   if (user) {
-    const { user } = req
     res.json({
       _id: user._id,
       name: user.name,

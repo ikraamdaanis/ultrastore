@@ -2,7 +2,14 @@ import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Footer, Header, ScrollToTop } from './components'
 import { Container } from 'react-bootstrap'
-import { CartScreen, HomeScreen, LoginScreen, ProductScreen, RegisterScreen } from './screens'
+import {
+  CartScreen,
+  HomeScreen,
+  LoginScreen,
+  ProductScreen,
+  ProfileScreen,
+  RegisterScreen,
+} from './screens'
 
 export const App = () => {
   return (
@@ -13,6 +20,7 @@ export const App = () => {
         <Container>
           <Route path='/login' component={LoginScreen} exact />
           <Route path='/register' component={RegisterScreen} exact />
+          <Route path='/profile' component={ProfileScreen} exact />
           <Route path='/product/:id' component={ProductScreen} exact />
           <Route path='/cart/:id?' component={CartScreen} exact />
           <Route path='/' component={HomeScreen} exact />
