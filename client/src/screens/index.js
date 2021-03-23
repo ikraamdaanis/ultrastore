@@ -1,6 +1,7 @@
 export { CartScreen } from './CartScreen'
 export { HomeScreen } from './HomeScreen'
 export { LoginScreen } from './LoginScreen'
+export { PaymentScreen } from './PaymentScreen'
 export { ProductScreen } from './ProductScreen'
 export { ProfileScreen } from './ProfileScreen'
 export { RegisterScreen } from './RegisterScreen'

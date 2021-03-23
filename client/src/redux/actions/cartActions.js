@@ -44,9 +44,11 @@ export const saveShippingAddress = data => async dispatch => {
   saveCartToLocalStorage('shippingAddress', data)
 }
 
-export const savePaymentMethod = id => async (dispatch, getState) => {
+export const savePaymentMethod = data => async dispatch => {
   dispatch({
     type: CART_SAVE_PAYMENT_METHOD,
-    payload: id,
+    payload: data,
   })
+
+  saveCartToLocalStorage('paymentMethod', data)
 }
