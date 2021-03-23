@@ -9,7 +9,7 @@ import {
 
 const saveCartToLocalStorage = (name, data) => localStorage.setItem(name, JSON.stringify(data))
 
-const updateTotalPrices = () => async (dispatch, getState) => {
+export const updateTotalPrices = () => async (dispatch, getState) => {
   const { cartItems } = getState().cart
 
   const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
@@ -25,7 +25,7 @@ const updateTotalPrices = () => async (dispatch, getState) => {
   saveCartToLocalStorage('cart', getState().cart)
 }
 
-export const addToCart = (id, qty) => async (dispatch, getState) => {
+export const addToCart = (id, qty) => async dispatch => {
   const { data } = await axios.get(`/api/products/${id}`)
 
   dispatch({
@@ -43,7 +43,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   dispatch(updateTotalPrices())
 }
 
-export const removeFromCart = id => async (dispatch, getState) => {
+export const removeFromCart = id => async dispatch => {
   dispatch({
     type: CART_REMOVE_ITEM,
     payload: id,
