@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Form } from 'react-bootstrap'
 import { Loader, Message, Rating } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, clearProductDetails, listProductDetails } from '../redux'
+import { addToCart, clearProductDetails, listProductDetails } from '../state'
 
 export const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch()

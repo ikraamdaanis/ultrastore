@@ -1,5 +1,5 @@
 import React from 'react'
-import { logout } from '../redux'
+import { logout } from '../state'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'

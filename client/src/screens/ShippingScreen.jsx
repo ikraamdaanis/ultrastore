@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { saveShippingAddress } from '../redux'
+import { saveShippingAddress } from '../state'
 import { CheckoutSteps, FormContainer } from '../components'
 import { Form, Button } from 'react-bootstrap'
 

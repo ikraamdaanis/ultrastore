@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails, updateUserProfile } from '../redux'
-import { USER_UPDATE_PROFILE_RESET } from '../redux/constants/userConstants'
+import { getUserDetails, updateUserProfile } from '../state'
+import { USER_UPDATE_PROFILE_RESET } from '../state/constants/userConstants'
 import { Loader, Message } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 

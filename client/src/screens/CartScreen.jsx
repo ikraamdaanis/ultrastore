@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Message } from '../components'
 import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
-import { addToCart, removeFromCart } from '../redux'
+import { addToCart, removeFromCart } from '../state'
 
 export const CartScreen = ({ match, location, history }) => {
   const dispatch = useDispatch()

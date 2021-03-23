@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../redux'
+import { register } from '../state'
 import { Link } from 'react-router-dom'
 import { FormContainer, Message } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
