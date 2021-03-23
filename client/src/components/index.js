@@ -1,3 +1,4 @@
+export { CheckoutSteps } from './CheckoutSteps'
 export { Header } from './Header'
 export { Footer } from './Footer'
 export { FormContainer } from './FormContainer'

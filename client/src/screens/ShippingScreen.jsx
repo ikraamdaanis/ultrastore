@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingAddress } from '../redux'
-import { FormContainer } from '../components'
+import { CheckoutSteps, FormContainer } from '../components'
 import { Form, Button } from 'react-bootstrap'
 
 export const ShippingScreen = ({ history }) => {
@@ -11,10 +11,10 @@ export const ShippingScreen = ({ history }) => {
   const cart = useSelector(state => state.cart)
   const { shippingAddress } = cart
 
-  const [address, setAddress] = useState(shippingAddress.address)
-  const [city, setCity] = useState(shippingAddress.city)
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
-  const [country, setCountry] = useState(shippingAddress.country)
+  const [address, setAddress] = useState(shippingAddress.address || '')
+  const [city, setCity] = useState(shippingAddress.city || '')
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '')
+  const [country, setCountry] = useState(shippingAddress.country || '')
 
   const submitHandler = event => {
     event.preventDefault()
@@ -24,6 +24,7 @@ export const ShippingScreen = ({ history }) => {
 
   return (
     <FormContainer>
+      <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address'>
