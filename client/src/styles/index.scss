@@ -1,5 +1,6 @@
-@import 'homeScreen';
-@import 'productScreen';
+@import './pages/homeScreen';
+@import './pages/productScreen';
+@import './components/header';
 
 * {
   margin: 0;

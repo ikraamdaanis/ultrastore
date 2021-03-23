@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../redux'
 import { Link } from 'react-router-dom'
-import { FormContainer, Message, Loader } from '../components'
+import { FormContainer, Message } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
 export const LoginScreen = ({ history, location }) => {
