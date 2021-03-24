@@ -15,6 +15,7 @@ import {
   ProfileScreen,
   RegisterScreen,
   ShippingScreen,
+  UserEditScreen,
   UserListScreen,
 } from './screens'
 
@@ -35,6 +36,7 @@ export const App = () => {
           <Route path='/placeorder' component={PlaceOrderScreen} exact />
           <Route path='/order/:id' component={OrderScreen} exact />
           <Route path='/admin/users' component={UserListScreen} exact />
+          <Route path='/admin/users/:id/edit' component={UserEditScreen} exact />
           <Route path='/admin/products' component={ProductListScreen} exact />
           <Route path='/admin/orders' component={OrderListScreen} exact />
           <Route path='/' component={HomeScreen} exact />

@@ -69,7 +69,10 @@ export const UserListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/user/${user._id}/edit`} style={{ margin: '0 0 0 1rem' }}>
+                  <LinkContainer
+                    to={`/admin/users/${user._id}/edit`}
+                    style={{ margin: '0 0 0 1rem' }}
+                  >
                     <Button className='btn-sm' title='Edit user'>
                       <i className='fas fa-edit'></i>
                     </Button>
