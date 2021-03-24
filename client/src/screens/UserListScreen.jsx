@@ -5,16 +5,25 @@ import { getUserList } from '../state'
 import { Loader, Message } from '../components'
 import { Table, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { USER_LIST_RESET } from '../state/constants/userConstants'
 
-export const UserListScreen = () => {
+export const UserListScreen = ({ history }) => {
   const dispatch = useDispatch()
 
   const userList = useSelector(state => state.userList)
   const { loading, users, error } = userList
 
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
   useEffect(() => {
-    dispatch(getUserList())
-  }, [dispatch])
+    if (userInfo && userInfo.isAdmin) {
+      dispatch(getUserList())
+    } else {
+      dispatch({ type: USER_LIST_RESET })
+      userInfo ? history.push('/') : history.push('/login')
+    }
+  }, [dispatch, userInfo, history])
 
   const deleteHandler = userId => {}
 
@@ -75,4 +84,4 @@ export const UserListScreen = () => {
   )
 }
 
-UserListScreen.propTypes = {}
+UserListScreen.propTypes = { history: PropTypes.object }
