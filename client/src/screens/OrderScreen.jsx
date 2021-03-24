@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { useDispatch, useSelector } from 'react-redux'
-import { ORDER_PAY_RESET } from '../state/constants/orderConstants'
+import { ORDER_DETAILS_RESET, ORDER_PAY_RESET } from '../state/constants/orderConstants'
 import { getOrderDetails, payOrder } from '../state'
 import { Message, Loader } from '../components'
 import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
@@ -33,10 +33,9 @@ export const OrderScreen = ({ match }) => {
       document.body.appendChild(script)
     }
 
-    console.log(order)
-
     if (!order || order._id !== orderId || successPay) {
       dispatch({ type: ORDER_PAY_RESET })
+      dispatch({ type: ORDER_DETAILS_RESET })
       dispatch(getOrderDetails(orderId))
     } else if (!order.isPaid) {
       if (!window.paypal) {
