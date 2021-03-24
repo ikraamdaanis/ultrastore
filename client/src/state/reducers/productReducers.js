@@ -6,6 +6,10 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_CLEAR,
+  PRODUCT_CREATE_REQUEST,
+  PRODUCT_CREATE_SUCCESS,
+  PRODUCT_CREATE_FAIL,
+  PRODUCT_CREATE_RESET,
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_SUCCESS,
   PRODUCT_DELETE_FAIL,
@@ -34,6 +38,21 @@ export const productDetailsReducer = (state = { product: { reviews: [] } }, { ty
       return { loading: false, error: payload }
     case PRODUCT_DETAILS_CLEAR:
       return { loading: false, product: { reviews: [] } }
+    default:
+      return state
+  }
+}
+
+export const productCreateReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case PRODUCT_CREATE_REQUEST:
+      return { loading: true }
+    case PRODUCT_CREATE_SUCCESS:
+      return { loading: false, success: true, product: payload }
+    case PRODUCT_CREATE_FAIL:
+      return { loading: false, error: payload }
+    case PRODUCT_CREATE_RESET:
+      return {}
     default:
       return state
   }
