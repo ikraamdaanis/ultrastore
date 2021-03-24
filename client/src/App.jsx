@@ -6,13 +6,16 @@ import {
   CartScreen,
   HomeScreen,
   LoginScreen,
+  OrderListScreen,
   OrderScreen,
   PaymentScreen,
   PlaceOrderScreen,
+  ProductListScreen,
   ProductScreen,
   ProfileScreen,
   RegisterScreen,
   ShippingScreen,
+  UserListScreen,
 } from './screens'
 
 export const App = () => {
@@ -31,6 +34,9 @@ export const App = () => {
           <Route path='/payment' component={PaymentScreen} exact />
           <Route path='/placeorder' component={PlaceOrderScreen} exact />
           <Route path='/order/:id' component={OrderScreen} exact />
+          <Route path='/admin/users' component={UserListScreen} exact />
+          <Route path='/admin/products' component={ProductListScreen} exact />
+          <Route path='/admin/orders' component={OrderListScreen} exact />
           <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>

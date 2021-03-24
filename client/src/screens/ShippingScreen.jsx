@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingAddress } from '../state'
-import { CheckoutSteps, FormContainer } from '../components'
-import { Form, Button } from 'react-bootstrap'
+import { CheckoutSteps } from '../components'
+import { Form, Button, Col } from 'react-bootstrap'
 
 export const ShippingScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ export const ShippingScreen = ({ history }) => {
   }
 
   return (
-    <FormContainer>
+    <Col className='mx-auto' style={{ maxWidth: '600px' }}>
       <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
@@ -71,7 +71,7 @@ export const ShippingScreen = ({ history }) => {
           Continue
         </Button>
       </Form>
-    </FormContainer>
+    </Col>
   )
 }
 
