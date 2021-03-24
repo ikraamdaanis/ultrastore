@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler'
-import { Product } from '../models/productModel.js'
 import { Order } from '../models/orderModel.js'
 
 // @desc Create new order
@@ -19,7 +18,6 @@ export const addOrderItems = asyncHandler(async (req, res) => {
   if (orderItems && orderItems.length === 0) {
     res.status(400)
     throw new Error('No order items')
-    return
   } else {
     const order = new Order({
       orderItems,
@@ -63,7 +61,7 @@ export const updateOrderToPaid = asyncHandler(async (req, res) => {
     order.paidAt = Date.now()
     order.paymentResult = {
       id: req.body.id,
-      status: res.body.status,
+      status: req.body.status,
       update_time: req.body.update_time,
       email_address: req.body.payer.email_address,
     }
