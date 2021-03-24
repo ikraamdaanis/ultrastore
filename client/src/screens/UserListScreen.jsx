@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserList } from '../state'
+import { deleteUser, getUserList } from '../state'
+import { USER_DELETE_RESET, USER_LIST_RESET } from '../state/constants/userConstants'
 import { Loader, Message } from '../components'
 import { Table, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { USER_LIST_RESET } from '../state/constants/userConstants'
 
 export const UserListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -16,6 +16,9 @@ export const UserListScreen = ({ history }) => {
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
+  const userDelete = useSelector(state => state.userDelete)
+  const { success: successDelete } = userDelete
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(getUserList())
@@ -23,9 +26,14 @@ export const UserListScreen = ({ history }) => {
       dispatch({ type: USER_LIST_RESET })
       userInfo ? history.push('/') : history.push('/login')
     }
-  }, [dispatch, userInfo, history])
+  }, [dispatch, userInfo, history, successDelete])
 
-  const deleteHandler = userId => {}
+  const deleteHandler = userId => {
+    successDelete && dispatch({ type: USER_DELETE_RESET })
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      dispatch(deleteUser(userId))
+    }
+  }
 
   return (
     <>
@@ -60,8 +68,8 @@ export const UserListScreen = ({ history }) => {
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
                 </td>
-                <td style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                  <LinkContainer to={`/user/${user._id}/edit`}>
+                <td>
+                  <LinkContainer to={`/user/${user._id}/edit`} style={{ margin: '0 0 0 1rem' }}>
                     <Button className='btn-sm' title='Edit user'>
                       <i className='fas fa-edit'></i>
                     </Button>
@@ -71,6 +79,7 @@ export const UserListScreen = ({ history }) => {
                     className='btn-sm'
                     onClick={() => deleteHandler(user._id)}
                     title='Delete user'
+                    style={{ margin: '0 0 0 1rem' }}
                   >
                     <i className='fas fa-trash'></i>
                   </Button>
