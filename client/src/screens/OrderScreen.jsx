@@ -33,6 +33,8 @@ export const OrderScreen = ({ match }) => {
       document.body.appendChild(script)
     }
 
+    console.log(order)
+
     if (!order || order._id !== orderId || successPay) {
       dispatch({ type: ORDER_PAY_RESET })
       dispatch(getOrderDetails(orderId))
@@ -157,7 +159,10 @@ export const OrderScreen = ({ match }) => {
                   {!sdkReady ? (
                     <Loader />
                   ) : (
-                    <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHandler} />
+                    <PayPalButton
+                      amount={order.totalPrice.toFixed(2)}
+                      onSuccess={successPaymentHandler}
+                    />
                   )}
                 </ListGroup.Item>
               )}

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { Message } from '../components'
+import { ORDER_CREATE_RESET, ORDER_DETAILS_RESET } from '../state/constants/orderConstants'
 import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { addToCart, removeFromCart } from '../state'
@@ -20,7 +21,11 @@ export const CartScreen = ({ match, location, history }) => {
   }, [dispatch, productId, qty])
 
   const removeFromCartHandler = id => dispatch(removeFromCart(id))
-  const checkoutHandler = () => history.push('/login?redirect=shipping')
+  const checkoutHandler = () => {
+    dispatch({ type: ORDER_DETAILS_RESET })
+    dispatch({ type: ORDER_CREATE_RESET })
+    history.push('/login?redirect=shipping')
+  }
 
   return (
     <Row>

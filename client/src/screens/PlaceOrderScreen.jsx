@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder } from '../state'
+import { ORDER_PAY_RESET } from '../state/constants/orderConstants'
 import { Message, CheckoutSteps } from '../components'
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -24,8 +25,11 @@ export const PlaceOrderScreen = ({ history }) => {
   const { order, success, error } = orderCreate
 
   useEffect(() => {
-    success && history.push(`/order/${order._id}`)
-  }, [success, history, order])
+    if (success) {
+      history.push(`/order/${order._id}`)
+      dispatch({ type: ORDER_PAY_RESET })
+    }
+  }, [success, history, order, dispatch])
 
   const placeOrderHandler = () => {
     dispatch(
