@@ -84,7 +84,11 @@ export const ProductListScreen = ({ history, match }) => {
           <tbody>
             {products.map(product => (
               <tr key={product._id}>
-                <td>{product._id}</td>
+                <td>
+                  <LinkContainer to={`/product/${product._id}`}>
+                    <span>{product._id}</span>
+                  </LinkContainer>
+                </td>
                 <td>{product.name}</td>
                 <td>£{product.price.toFixed(2)}</td>
                 <td>{product.category}</td>
