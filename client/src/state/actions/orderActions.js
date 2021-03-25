@@ -11,6 +11,9 @@ import {
   ORDER_USER_REQUEST,
   ORDER_USER_SUCCESS,
   ORDER_USER_FAIL,
+  ORDER_ALL_USERS_REQUEST,
+  ORDER_ALL_USERS_SUCCESS,
+  ORDER_ALL_USERS_FAIL,
 } from '../constants/orderConstants'
 import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
 import axios from 'axios'
@@ -117,6 +120,32 @@ export const getUserOrders = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_USER_FAIL,
+      payload:
+        error.response && error.response.data.message ? error.response.data.message : error.message,
+    })
+  }
+}
+
+export const getAllUsersOrders = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_ALL_USERS_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/orders`, config)
+
+    dispatch({ type: ORDER_ALL_USERS_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: ORDER_ALL_USERS_FAIL,
       payload:
         error.response && error.response.data.message ? error.response.data.message : error.message,
     })
