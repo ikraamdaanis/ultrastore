@@ -90,7 +90,9 @@ export const OrderScreen = ({ match, history }) => {
                 {order.shippingAddress.postalCode}, {order.shippingAddress.country}
               </p>
               {order.isDelivered ? (
-                <Message variant='success'>Delivered on {order.deliveredAt}</Message>
+                <Message variant='success'>
+                  Delivered on {new Date(order.deliveredAt).toLocaleString('en-GB')}
+                </Message>
               ) : (
                 <Message variant='danger'>Not delivered</Message>
               )}
@@ -102,7 +104,9 @@ export const OrderScreen = ({ match, history }) => {
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant='success'>Paid on {order.paidAt}</Message>
+                <Message variant='success'>
+                  Paid on {new Date(order.paidAt).toLocaleString('en-GB')}
+                </Message>
               ) : (
                 <Message variant='danger'>Not paid</Message>
               )}
