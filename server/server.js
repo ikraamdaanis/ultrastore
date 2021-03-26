@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 import { connectToDatabase } from './config/database.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 import productRoutes from './routes/productRoutes.js'
@@ -13,6 +14,8 @@ dotenv.config()
 connectToDatabase()
 
 const app = express()
+
+if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
 app.use(express.json())
 
