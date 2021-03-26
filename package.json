@@ -12,7 +12,7 @@
     "data:import": "node server/utils/seeder",
     "data:destroy": "node server/utils/seeder -d",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "heroku-deploy": "git push heroku master"
+    "heroku-deploy": "git push heroku main"
   },
   "repository": {
     "type": "git",
