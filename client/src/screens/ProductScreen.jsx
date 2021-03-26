@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Form } from 'react-bootstrap'
-import { Loader, Message, Rating } from '../components'
+import { Loader, Message, Meta, Rating } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../state/constants/productConstants'
 import { addToCart, clearProductDetails, createProductReview, listProductDetails } from '../state'
@@ -71,6 +71,7 @@ export const ProductScreen = ({ match, history }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
+          <Meta title={product.name} description={product.description} />
           <Row>
             <Col md={7} style={{ minWidth: '50%' }}>
               <Image src={product.image} alt={product.name} fluid />

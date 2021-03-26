@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { savePaymentMethod } from '../state'
-import { CheckoutSteps, FormContainer } from '../components'
+import { CheckoutSteps, FormContainer, Meta } from '../components'
 import { Form, Button, Col } from 'react-bootstrap'
 
 export const PaymentScreen = ({ history }) => {
@@ -23,6 +23,7 @@ export const PaymentScreen = ({ history }) => {
 
   return (
     <FormContainer>
+      <Meta title='Payment' />
       <CheckoutSteps step1 step2 step3 />
       <h1>Payment Method</h1>
       <Form onSubmit={submitHandler}>

@@ -9,7 +9,7 @@ import {
   ORDER_DELIVER_RESET,
 } from '../state/constants/orderConstants'
 import { getOrderDetails, payOrder, deliverOrder } from '../state'
-import { Message, Loader } from '../components'
+import { Message, Loader, Meta } from '../components'
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -72,6 +72,7 @@ export const OrderScreen = ({ match, history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
+      <Meta title='Order' />
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>

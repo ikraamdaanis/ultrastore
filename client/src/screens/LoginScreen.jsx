@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../state'
 import { Link } from 'react-router-dom'
-import { FormContainer, Message } from '../components'
+import { FormContainer, Message, Meta } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
 export const LoginScreen = ({ history, location }) => {
@@ -28,6 +28,7 @@ export const LoginScreen = ({ history, location }) => {
 
   return (
     <FormContainer>
+      <Meta title='Login' />
       <h1>Sign In</h1>
       {error && <Message variant='danger'>{error}</Message>}
       <Form onSubmit={submitHandler}>

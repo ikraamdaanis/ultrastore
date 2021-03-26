@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { createProduct, deleteProduct, listProducts } from '../state'
 import { PRODUCT_CREATE_RESET } from '../state/constants/productConstants'
-import { Loader, Message, Paginate } from '../components'
+import { Loader, Message, Meta, Paginate } from '../components'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -53,6 +53,7 @@ export const ProductListScreen = ({ history, match }) => {
 
   return (
     <>
+      <Meta title='Product List' />
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>

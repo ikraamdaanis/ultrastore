@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../state'
-import { Loader, Message, Paginate, Product, SearchBox } from '../components'
+import { Loader, Message, Meta, Paginate, Product, SearchBox } from '../components'
 import { Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -21,6 +21,7 @@ export const HomeScreen = ({ match }) => {
 
   return (
     <>
+      <Meta title='Welcome to UltraStore' />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {keyword ? (
           <Link className='btn btn-dark my-3' to='/'>

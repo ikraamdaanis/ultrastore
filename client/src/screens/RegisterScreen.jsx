@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../state'
 import { Link } from 'react-router-dom'
-import { FormContainer, Message } from '../components'
+import { FormContainer, Message, Meta } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
 export const RegisterScreen = ({ history, location }) => {
@@ -36,6 +36,7 @@ export const RegisterScreen = ({ history, location }) => {
 
   return (
     <FormContainer>
+      <Meta title='Register an Account' />
       <h1>Sign Up</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {error && <Message variant='danger'>{error}</Message>}

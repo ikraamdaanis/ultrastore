@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingAddress } from '../state'
-import { CheckoutSteps } from '../components'
+import { CheckoutSteps, Meta } from '../components'
 import { Form, Button, Col } from 'react-bootstrap'
 
 export const ShippingScreen = ({ history }) => {
@@ -24,6 +24,7 @@ export const ShippingScreen = ({ history }) => {
 
   return (
     <Col className='mx-auto' style={{ maxWidth: '600px' }}>
+      <Meta title='Shipping' />
       <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>

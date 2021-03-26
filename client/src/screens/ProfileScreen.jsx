@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, getUserOrders, updateUserProfile } from '../state'
 import { USER_UPDATE_PROFILE_RESET } from '../state/constants/userConstants'
-import { Loader, Message } from '../components'
+import { Loader, Message, Meta } from '../components'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -66,6 +66,7 @@ export const ProfileScreen = ({ history }) => {
 
   return (
     <Row>
+      <Meta title='My Profile' />
       <Col md={3}>
         <h2>User Profile</h2>
         {message && <Message variant='danger'>{message}</Message>}

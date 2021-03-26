@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser, getUserList } from '../state'
 import { USER_DELETE_RESET, USER_LIST_RESET } from '../state/constants/userConstants'
-import { Loader, Message } from '../components'
+import { Loader, Message, Meta } from '../components'
 import { Table, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -37,6 +37,7 @@ export const UserListScreen = ({ history }) => {
 
   return (
     <>
+      <Meta title='Users' />
       <h1>Users</h1>
       {loading ? (
         <Loader />

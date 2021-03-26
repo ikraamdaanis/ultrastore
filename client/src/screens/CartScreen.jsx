@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { Message } from '../components'
+import { Message, Meta } from '../components'
 import { ORDER_CREATE_RESET, ORDER_DETAILS_RESET } from '../state/constants/orderConstants'
 import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
@@ -29,6 +29,7 @@ export const CartScreen = ({ match, location, history }) => {
 
   return (
     <Row>
+      <Meta title='Shopping Cart' />
       <Col md={8}>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (

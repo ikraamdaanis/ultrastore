@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearProductDetails, listProductDetails, updateProduct } from '../state'
 import { PRODUCT_UPDATE_RESET } from '../state/constants/productConstants'
 import { Link } from 'react-router-dom'
-import { FormContainer, Loader, Message } from '../components'
+import { FormContainer, Loader, Message, Meta } from '../components'
 import { Form, Button } from 'react-bootstrap'
 
 export const ProductEditScreen = ({ history, match }) => {
@@ -91,6 +91,7 @@ export const ProductEditScreen = ({ history, match }) => {
 
   return (
     <>
+      <Meta title='Edit Product' />
       <Link to='/admin/products' className='btn my-3'>
         Go Back
       </Link>

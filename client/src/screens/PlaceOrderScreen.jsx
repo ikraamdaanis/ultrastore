@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder } from '../state'
 import { ORDER_PAY_RESET } from '../state/constants/orderConstants'
-import { Message, CheckoutSteps } from '../components'
+import { Message, CheckoutSteps, Meta } from '../components'
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -47,6 +47,7 @@ export const PlaceOrderScreen = ({ history }) => {
 
   return (
     <>
+      <Meta title='Place Order' />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>

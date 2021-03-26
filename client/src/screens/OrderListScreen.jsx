@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsersOrders } from '../state'
 import { ORDER_ALL_USERS_RESET } from '../state/constants/orderConstants'
-import { Loader, Message } from '../components'
+import { Loader, Message, Meta } from '../components'
 import { Table, Row, Col, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -26,9 +26,10 @@ export const OrderListScreen = ({ history }) => {
 
   return (
     <>
+      <Meta title='User Orders' />
       <Row className='align-items-center'>
         <Col>
-          <h1>Products</h1>
+          <h1>User Orders</h1>
         </Col>
       </Row>
       {loading ? (
