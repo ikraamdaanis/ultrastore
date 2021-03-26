@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 export const SearchBox = () => {
   const history = useHistory()
+  const params = useParams()
 
-  const [keyword, setKeyword] = useState('')
+  const [keyword, setKeyword] = useState(params.keyword || '')
 
   const submitHandler = event => {
     event.preventDefault()
@@ -21,7 +22,8 @@ export const SearchBox = () => {
         className='search-input'
         id='search'
         type='search'
-        name='q'
+        name='query'
+        value={keyword}
         onChange={({ target }) => setKeyword(target.value)}
         placeholder='Search Products...'
       ></input>
