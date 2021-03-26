@@ -32,7 +32,7 @@ export const CartScreen = ({ match, location, history }) => {
       <Meta title='Shopping Cart' />
       <Col md={8}>
         <h1>Shopping Cart</h1>
-        {cartItems?.length === 0 ? (
+        {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to='/'>Go back</Link>
           </Message>

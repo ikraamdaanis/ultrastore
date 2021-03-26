@@ -35,7 +35,7 @@ export const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1)
 
   useEffect(() => {
-    const currentItem = cartItems?.find(cartItem => cartItem.product === match.params.id)
+    const currentItem = cartItems.find(cartItem => cartItem.product === match.params.id)
     currentItem && setQty(currentItem.qty)
   }, [cartItems, match.params.id])
 
