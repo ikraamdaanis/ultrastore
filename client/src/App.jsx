@@ -41,6 +41,7 @@ export const App = () => {
           <Route path='/admin/products' component={ProductListScreen} exact />
           <Route path='/admin/products/:id/edit' component={ProductEditScreen} exact />
           <Route path='/admin/orders' component={OrderListScreen} exact />
+          <Route path='/search/:keyword' component={HomeScreen} exact />
           <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>

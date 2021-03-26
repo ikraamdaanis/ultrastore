@@ -1,22 +1,35 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../state'
-import { Loader, Message, Product } from '../components'
+import { Loader, Message, Product, SearchBox } from '../components'
 import { Col, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ match }) => {
   const dispatch = useDispatch()
+
+  const keyword = match.params?.keyword?.toLowerCase()
 
   const productList = useSelector(state => state.productList)
   const { loading, error, products } = productList
 
   useEffect(() => {
-    dispatch(listProducts())
-  }, [dispatch])
+    dispatch(listProducts(keyword))
+  }, [dispatch, keyword])
 
   return (
     <>
-      <h1>Latest Products</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        {keyword ? (
+          <Link className='btn btn-dark my-3' to='/'>
+            Back
+          </Link>
+        ) : (
+          <h1>Latest Products</h1>
+        )}
+        <SearchBox />
+      </div>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -33,3 +46,5 @@ export const HomeScreen = () => {
     </>
   )
 }
+
+HomeScreen.propTypes = { match: PropTypes.object }

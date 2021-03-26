@@ -72,7 +72,7 @@ export const ProductScreen = ({ match, history }) => {
       ) : (
         <>
           <Row>
-            <Col md={7}>
+            <Col md={7} style={{ minWidth: '50%' }}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={5}>
