@@ -33,24 +33,79 @@ export const Header = () => {
                 </Nav.Link>
               </LinkContainer>
               {userInfo && userInfo.isAdmin && (
-                <NavDropdown title='Admin' id='admin'>
+                <NavDropdown
+                  title={
+                    <>
+                      <i className='fas fa-user-lock'></i>
+                      <span className='profile-link'>Users</span>
+                    </>
+                  }
+                  id='admin'
+                >
                   <LinkContainer to='/admin/users'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <div className='icon-container'>
+                        <span className='icon'>
+                          <i className='fas fa-users-cog'></i>
+                        </span>
+                        <span>Users</span>
+                      </div>
+                    </NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/products'>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <div className='icon-container'>
+                        <span className='icon'>
+                          <i className='fas fa-list-ul'></i>
+                        </span>
+                        <span>Products</span>
+                      </div>
+                    </NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/orders'>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <div className='icon-container'>
+                        <span className='icon'>
+                          <i className='fas fa-truck-loading'></i>
+                        </span>
+                        <span>Orders</span>
+                      </div>
+                    </NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
+                <NavDropdown
+                  title={
+                    <>
+                      <i className='fas fa-user'></i>
+                      <span>{userInfo.name}</span>
+                    </>
+                  }
+                  id='username'
+                >
                   <LinkContainer to='/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <>
+                        <div className='icon-container'>
+                          <span className='icon'>
+                            <i className='fas fa-user'></i>
+                          </span>
+                          <span>Profile</span>
+                        </div>
+                      </>
+                    </NavDropdown.Item>
                   </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    <>
+                      <div className='icon-container'>
+                        <span className='icon'>
+                          <i className='fas fa-sign-out-alt'></i>
+                        </span>
+                        <span>Logout</span>
+                      </div>
+                    </>
+                  </NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <LinkContainer to='/login'>

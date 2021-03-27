@@ -2,4 +2,14 @@ header {
   i {
     margin-right: 5px;
   }
+  .icon-container {
+    display: flex;
+    align-items: center;
+    .icon {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 0px;
+      width: 10px;
+    }
+  }
 }
