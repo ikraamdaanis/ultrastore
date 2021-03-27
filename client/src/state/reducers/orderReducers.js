@@ -25,7 +25,7 @@ import {
   ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
 
-export const orderCreateReducer = (state = {}, { type, payload }) => {
+export const orderCreateReducer = (state = { loading: true }, { type, payload }) => {
   switch (type) {
     case ORDER_CREATE_REQUEST:
       return {
@@ -150,7 +150,7 @@ export const orderUserReducer = (state = { orders: [] }, { type, payload }) => {
   }
 }
 
-export const orderAllUsersReducer = (state = { orders: [] }, { type, payload }) => {
+export const orderAllUsersReducer = (state = { loading: true, orders: [] }, { type, payload }) => {
   switch (type) {
     case ORDER_ALL_USERS_REQUEST:
       return {
@@ -167,7 +167,7 @@ export const orderAllUsersReducer = (state = { orders: [] }, { type, payload }) 
         error: payload,
       }
     case ORDER_ALL_USERS_RESET:
-      return { orders: [] }
+      return { loading: true, orders: [] }
     default:
       return state
   }

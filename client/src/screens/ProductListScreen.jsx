@@ -33,7 +33,6 @@ export const ProductListScreen = ({ history, match }) => {
     dispatch({ type: PRODUCT_CREATE_RESET })
     if (!userInfo) return history.push('/login')
     if (!userInfo.isAdmin) return history.push('/')
-    console.log({ products })
 
     if (successCreate) {
       history.push(`/admin/products/${createdProduct._id}/edit`)

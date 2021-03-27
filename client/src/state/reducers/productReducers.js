@@ -5,6 +5,7 @@ import {
   PRODUCT_LIST_ADMIN_REQUEST,
   PRODUCT_LIST_ADMIN_SUCCESS,
   PRODUCT_LIST_ADMIN_FAIL,
+  PRODUCT_LIST_ADMIN_RESET,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
@@ -57,6 +58,8 @@ export const productListAdminReducer = (state = { products: [] }, { type, payloa
       }
     case PRODUCT_LIST_ADMIN_FAIL:
       return { loading: false, error: payload }
+    case PRODUCT_LIST_ADMIN_RESET:
+      return { products: [] }
     default:
       return state
   }

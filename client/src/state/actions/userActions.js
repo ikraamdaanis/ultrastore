@@ -31,6 +31,7 @@ import {
   ORDER_DETAILS_RESET,
   ORDER_USER_RESET,
 } from '../constants/orderConstants'
+import { PRODUCT_LIST_ADMIN_RESET } from '../constants/productConstants'
 
 export const register = (name, email, password) => async dispatch => {
   try {
@@ -90,6 +91,7 @@ export const logout = () => dispatch => {
   dispatch({ type: ORDER_CREATE_RESET })
   dispatch({ type: ORDER_DETAILS_RESET })
   dispatch({ type: ORDER_USER_RESET })
+  dispatch({ type: PRODUCT_LIST_ADMIN_RESET })
 }
 
 export const getUserDetails = id => async (dispatch, getState) => {
