@@ -26,6 +26,7 @@ export const UserListScreen = ({ history }) => {
       dispatch({ type: USER_LIST_RESET })
       userInfo ? history.push('/') : history.push('/login')
     }
+    return () => dispatch({ type: USER_LIST_RESET })
   }, [dispatch, userInfo, history, successDelete])
 
   const deleteHandler = userId => {
