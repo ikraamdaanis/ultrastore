@@ -10,7 +10,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 export const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
 
-  const pageNumber = match.params?.pageNumber || 1
+  const pageNumber = match.params?.pageNumber
 
   const productList = useSelector(state => state.productList)
   const { loading, products, error, page, pages } = productList
@@ -37,9 +37,22 @@ export const ProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/products/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts('', pageNumber))
+      products?.length === 0 && dispatch(listProducts('', pageNumber))
     }
-  }, [dispatch, userInfo, history, successDelete, successCreate, createdProduct, pageNumber])
+  }, [
+    dispatch,
+    userInfo,
+    history,
+    successDelete,
+    successCreate,
+    createdProduct,
+    products,
+    pageNumber,
+  ])
+
+  useEffect(() => {
+    if (pageNumber || !match.params.search) dispatch(listProducts('', pageNumber))
+  }, [dispatch, pageNumber, match])
 
   const createProductHandler = () => {
     dispatch(createProduct())

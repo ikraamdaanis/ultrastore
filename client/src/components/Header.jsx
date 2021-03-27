@@ -37,7 +37,7 @@ export const Header = () => {
                   title={
                     <>
                       <i className='fas fa-user-lock'></i>
-                      <span className='profile-link'>Users</span>
+                      <span className='profile-link'>Admin</span>
                     </>
                   }
                   id='admin'
