@@ -2,6 +2,9 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_FAIL,
+  PRODUCT_LIST_ADMIN_REQUEST,
+  PRODUCT_LIST_ADMIN_SUCCESS,
+  PRODUCT_LIST_ADMIN_FAIL,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
@@ -35,6 +38,24 @@ export const productListReducer = (state = { products: [] }, { type, payload }) 
         page: payload.page,
       }
     case PRODUCT_LIST_FAIL:
+      return { loading: false, error: payload }
+    default:
+      return state
+  }
+}
+
+export const productListAdminReducer = (state = { products: [] }, { type, payload }) => {
+  switch (type) {
+    case PRODUCT_LIST_ADMIN_REQUEST:
+      return { loading: true }
+    case PRODUCT_LIST_ADMIN_SUCCESS:
+      return {
+        loading: false,
+        products: payload.products,
+        pages: payload.pages,
+        page: payload.page,
+      }
+    case PRODUCT_LIST_ADMIN_FAIL:
       return { loading: false, error: payload }
     default:
       return state

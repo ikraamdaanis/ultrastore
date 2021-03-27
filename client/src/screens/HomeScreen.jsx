@@ -21,6 +21,10 @@ export const HomeScreen = ({ match }) => {
 
   useEffect(() => {
     if (keyword || pageNumber) dispatch(listProducts(keyword, pageNumber))
+
+    return () => {
+      if (keyword || pageNumber) dispatch(listProducts())
+    }
   }, [dispatch, keyword, pageNumber])
 
   return (

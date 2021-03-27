@@ -12,8 +12,8 @@ export const ProductListScreen = ({ history, match }) => {
 
   const pageNumber = match.params?.pageNumber
 
-  const productList = useSelector(state => state.productList)
-  const { loading, products, error, page, pages } = productList
+  const productListAdmin = useSelector(state => state.productListAdmin)
+  const { loading, products, error, page, pages } = productListAdmin
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -33,11 +33,12 @@ export const ProductListScreen = ({ history, match }) => {
     dispatch({ type: PRODUCT_CREATE_RESET })
     if (!userInfo) return history.push('/login')
     if (!userInfo.isAdmin) return history.push('/')
+    console.log({ products })
 
     if (successCreate) {
       history.push(`/admin/products/${createdProduct._id}/edit`)
     } else {
-      products?.length === 0 && dispatch(listProducts('', pageNumber))
+      products?.length === 0 && dispatch(listProducts('', pageNumber, true))
     }
   }, [
     dispatch,
@@ -51,8 +52,8 @@ export const ProductListScreen = ({ history, match }) => {
   ])
 
   useEffect(() => {
-    if (pageNumber || !match.params.search) dispatch(listProducts('', pageNumber))
-  }, [dispatch, pageNumber, match])
+    if (pageNumber) dispatch(listProducts('', pageNumber, true))
+  }, [dispatch, pageNumber])
 
   const createProductHandler = () => {
     dispatch(createProduct())
