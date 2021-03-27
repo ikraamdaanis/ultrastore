@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { listProducts } from '../state'
 import { useHistory, useParams } from 'react-router-dom'
 
 export const SearchBox = () => {
+  const dispatch = useDispatch()
+
   const history = useHistory()
   const params = useParams()
 
@@ -12,6 +16,7 @@ export const SearchBox = () => {
     if (keyword.trim()) {
       history.push(`/search/${keyword}`)
     } else {
+      dispatch(listProducts())
       history.push('/')
     }
   }

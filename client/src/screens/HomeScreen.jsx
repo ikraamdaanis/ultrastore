@@ -10,7 +10,7 @@ export const HomeScreen = ({ match }) => {
   const dispatch = useDispatch()
 
   const keyword = match.params?.keyword?.toLowerCase()
-  const pageNumber = match.params?.pageNumber || 1
+  const pageNumber = match.params?.pageNumber
 
   const productList = useSelector(state => state.productList)
   const { loading, error, products, page, pages } = productList
@@ -18,6 +18,10 @@ export const HomeScreen = ({ match }) => {
   useEffect(() => {
     products?.length === 0 && dispatch(listProducts(keyword, pageNumber))
   }, [dispatch, products, keyword, pageNumber])
+
+  useEffect(() => {
+    if (keyword || pageNumber) dispatch(listProducts(keyword, pageNumber))
+  }, [dispatch, keyword, pageNumber])
 
   return (
     <>
