@@ -28,7 +28,8 @@ import {
   USER_DELETE_RESET,
 } from '../constants/userConstants'
 
-export const userLoginReducer = (state = {}, { type, payload }) => {
+const userLoginDefaultState = { loading: true, userInfo: null, error: null }
+export const userLoginReducer = (state = userLoginDefaultState, { type, payload }) => {
   switch (type) {
     case USER_LOGIN_REQUEST:
       return { loading: true }
@@ -37,13 +38,14 @@ export const userLoginReducer = (state = {}, { type, payload }) => {
     case USER_LOGIN_FAIL:
       return { loading: false, error: payload }
     case USER_LOGOUT:
-      return {}
+      return userLoginDefaultState
     default:
       return state
   }
 }
 
-export const userRegisterReducer = (state = {}, { type, payload }) => {
+const userRegisterDefaultState = { loading: true, userInfo: null, error: null }
+export const userRegisterReducer = (state = userRegisterDefaultState, { type, payload }) => {
   switch (type) {
     case USER_REGISTER_REQUEST:
       return { loading: true }
@@ -52,13 +54,14 @@ export const userRegisterReducer = (state = {}, { type, payload }) => {
     case USER_REGISTER_FAIL:
       return { loading: false, error: payload }
     case USER_LOGOUT:
-      return {}
+      return userRegisterDefaultState
     default:
       return state
   }
 }
 
-export const userDetailsReducer = (state = { loading: true, user: null }, { type, payload }) => {
+const userDetailsDefaultState = { loading: true, user: null, error: null }
+export const userDetailsReducer = (state = userDetailsDefaultState, { type, payload }) => {
   switch (type) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true }
@@ -67,13 +70,17 @@ export const userDetailsReducer = (state = { loading: true, user: null }, { type
     case USER_DETAILS_FAIL:
       return { loading: false, error: payload }
     case USER_DETAILS_RESET:
-      return { loading: true, user: null }
+      return userDetailsDefaultState
     default:
       return state
   }
 }
 
-export const userUpdateProfileReducer = (state = {}, { type, payload }) => {
+const userUpdateProfileDefaultState = { loading: true, success: false, error: null }
+export const userUpdateProfileReducer = (
+  state = userUpdateProfileDefaultState,
+  { type, payload }
+) => {
   switch (type) {
     case USER_UPDATE_PROFILE_REQUEST:
       return { loading: true }
@@ -82,13 +89,14 @@ export const userUpdateProfileReducer = (state = {}, { type, payload }) => {
     case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: payload }
     case USER_UPDATE_PROFILE_RESET:
-      return {}
+      return userUpdateProfileDefaultState
     default:
       return state
   }
 }
 
-export const userListReducer = (state = { users: [] }, { type, payload }) => {
+const userListDefaultState = { loading: true, users: [], error: null }
+export const userListReducer = (state = userListDefaultState, { type, payload }) => {
   switch (type) {
     case USER_LIST_REQUEST:
       return { loading: true }
@@ -97,13 +105,14 @@ export const userListReducer = (state = { users: [] }, { type, payload }) => {
     case USER_LIST_FAIL:
       return { loading: false, error: payload }
     case USER_LIST_RESET:
-      return { loading: true, users: [] }
+      return userListDefaultState
     default:
       return state
   }
 }
 
-export const userUpdateReducer = (state = { user: {} }, { type, payload }) => {
+const userUpdateDefaultState = { loading: true, success: false, error: null }
+export const userUpdateReducer = (state = userUpdateDefaultState, { type, payload }) => {
   switch (type) {
     case USER_UPDATE_REQUEST:
       return { loading: true }
@@ -112,13 +121,14 @@ export const userUpdateReducer = (state = { user: {} }, { type, payload }) => {
     case USER_UPDATE_FAIL:
       return { loading: false, error: payload }
     case USER_UPDATE_RESET:
-      return { user: {} }
+      return userUpdateDefaultState
     default:
       return state
   }
 }
 
-export const userDeleteReducer = (state = {}, { type, payload }) => {
+const userDeleteDefaultState = { loading: true, success: false, error: null }
+export const userDeleteReducer = (state = userDeleteDefaultState, { type, payload }) => {
   switch (type) {
     case USER_DELETE_REQUEST:
       return { loading: true }
@@ -127,7 +137,7 @@ export const userDeleteReducer = (state = {}, { type, payload }) => {
     case USER_DELETE_FAIL:
       return { loading: false, error: payload }
     case USER_DELETE_RESET:
-      return {}
+      return userDeleteDefaultState
     default:
       return state
   }

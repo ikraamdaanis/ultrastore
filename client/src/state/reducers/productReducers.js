@@ -45,7 +45,10 @@ export const productListReducer = (state = { products: [] }, { type, payload }) 
   }
 }
 
-export const productListAdminReducer = (state = { products: [] }, { type, payload }) => {
+export const productListAdminReducer = (
+  state = { loading: true, products: [] },
+  { type, payload }
+) => {
   switch (type) {
     case PRODUCT_LIST_ADMIN_REQUEST:
       return { loading: true }
@@ -59,7 +62,7 @@ export const productListAdminReducer = (state = { products: [] }, { type, payloa
     case PRODUCT_LIST_ADMIN_FAIL:
       return { loading: false, error: payload }
     case PRODUCT_LIST_ADMIN_RESET:
-      return { products: [] }
+      return { loading: true, products: [] }
     default:
       return state
   }
