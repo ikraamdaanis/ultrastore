@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, updateUser } from '../state'
-import { USER_UPDATE_RESET } from '../state/constants/userConstants'
+import { USER_DETAILS_RESET, USER_UPDATE_RESET } from '../state/constants/userConstants'
 import { Link } from 'react-router-dom'
 import { FormContainer, Loader, Message, Meta } from '../components'
 import { Form, Button } from 'react-bootstrap'
@@ -25,23 +25,24 @@ export const UserEditScreen = ({ history, match }) => {
   const [isAdmin, setIsAdmin] = useState('')
 
   useEffect(() => {
+    if (!userInfo) return history.push('/login')
+    if (!userInfo.isAdmin) return history.push('/')
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET })
-      history.push('/admin/users')
-    } else {
-      if (userInfo && userInfo.isAdmin) {
-        if (!user || user._id !== userId) {
-          dispatch(getUserDetails(userId))
-        } else {
-          setName(user.name)
-          setEmail(user.email)
-          setIsAdmin(user.isAdmin)
-        }
-      } else {
-        history.push('/login')
-      }
+      return history.push('/admin/users')
     }
-  }, [history, user, userInfo, userId, dispatch, successUpdate])
+    dispatch(getUserDetails(userId))
+
+    return () => dispatch({ type: USER_DETAILS_RESET })
+  }, [history, userInfo, userId, dispatch, successUpdate])
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name)
+      setEmail(user.email)
+      setIsAdmin(user.isAdmin)
+    }
+  }, [user])
 
   const submitHandler = event => {
     event.preventDefault()
@@ -58,7 +59,7 @@ export const UserEditScreen = ({ history, match }) => {
   return (
     <>
       <Meta title='Edit User' />
-      <Link to='/admin/users' className='btn my-3'>
+      <Link to='/admin/users' className='btn my-3 btn-dark'>
         Go Back
       </Link>
       <FormContainer>

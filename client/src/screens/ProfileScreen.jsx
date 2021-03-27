@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails, getUserOrders, updateUserProfile } from '../state'
+import { getUserOrders, updateUserProfile } from '../state'
 import { USER_UPDATE_PROFILE_RESET } from '../state/constants/userConstants'
 import { Loader, Message, Meta } from '../components'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
@@ -20,8 +20,6 @@ export const ProfileScreen = ({ history }) => {
   const { loading: loadingOrders, orders, error: errorOrders } = orderUser
 
   useEffect(() => {
-    !userInfo && dispatch(getUserDetails('profile'))
-
     dispatch(getUserOrders())
   }, [dispatch, userInfo])
 

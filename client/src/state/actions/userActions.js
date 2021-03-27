@@ -27,11 +27,14 @@ import {
 } from '../constants/userConstants'
 import axios from 'axios'
 import {
+  ORDER_ALL_USERS_RESET,
   ORDER_CREATE_RESET,
+  ORDER_DELIVER_RESET,
   ORDER_DETAILS_RESET,
+  ORDER_PAY_RESET,
   ORDER_USER_RESET,
 } from '../constants/orderConstants'
-import { PRODUCT_LIST_ADMIN_RESET } from '../constants/productConstants'
+import { PRODUCT_LIST_ADMIN_RESET, PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 export const register = (name, email, password) => async dispatch => {
   try {
@@ -90,8 +93,12 @@ export const logout = () => dispatch => {
   dispatch({ type: USER_LIST_RESET })
   dispatch({ type: ORDER_CREATE_RESET })
   dispatch({ type: ORDER_DETAILS_RESET })
+  dispatch({ type: ORDER_PAY_RESET })
+  dispatch({ type: ORDER_ALL_USERS_RESET })
+  dispatch({ type: ORDER_DELIVER_RESET })
   dispatch({ type: ORDER_USER_RESET })
   dispatch({ type: PRODUCT_LIST_ADMIN_RESET })
+  dispatch({ type: PRODUCT_UPDATE_RESET })
 }
 
 export const getUserDetails = id => async (dispatch, getState) => {
@@ -196,8 +203,6 @@ export const updateUser = user => async (dispatch, getState) => {
 
     dispatch({ type: USER_UPDATE_SUCCESS })
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data })
-
-    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_UPDATE_FAIL,

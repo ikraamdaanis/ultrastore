@@ -58,7 +58,7 @@ export const userRegisterReducer = (state = {}, { type, payload }) => {
   }
 }
 
-export const userDetailsReducer = (state = { user: {} }, { type, payload }) => {
+export const userDetailsReducer = (state = { loading: true, user: null }, { type, payload }) => {
   switch (type) {
     case USER_DETAILS_REQUEST:
       return { ...state, loading: true }
@@ -67,7 +67,7 @@ export const userDetailsReducer = (state = { user: {} }, { type, payload }) => {
     case USER_DETAILS_FAIL:
       return { loading: false, error: payload }
     case USER_DETAILS_RESET:
-      return {}
+      return { loading: true, user: null }
     default:
       return state
   }
