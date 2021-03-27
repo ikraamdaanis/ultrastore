@@ -16,8 +16,8 @@ export const HomeScreen = ({ match }) => {
   const { loading, error, products, page, pages } = productList
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
-  }, [dispatch, keyword, pageNumber])
+    products?.length === 0 && dispatch(listProducts(keyword, pageNumber))
+  }, [dispatch, products, keyword, pageNumber])
 
   return (
     <>
