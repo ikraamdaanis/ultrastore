@@ -22,6 +22,8 @@ export const OrderListScreen = ({ history }) => {
     if (!userInfo.isAdmin) return history.push('/')
 
     dispatch(getAllUsersOrders())
+
+    return () => dispatch({ type: ORDER_ALL_USERS_RESET })
   }, [dispatch, userInfo, history])
 
   return (
