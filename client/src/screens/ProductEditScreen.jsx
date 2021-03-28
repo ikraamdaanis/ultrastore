@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProductDetails, listProducts, updateProduct } from '../state'
 import { PRODUCT_UPDATE_RESET } from '../state/constants/productConstants'
-import { Link } from 'react-router-dom'
 import { FormContainer, Loader, Message, Meta } from '../components'
 import { Form, Button } from 'react-bootstrap'
 
@@ -92,9 +91,9 @@ export const ProductEditScreen = ({ history, match }) => {
   return (
     <>
       <Meta title='Edit Product' />
-      <Link to='/admin/products' className='btn my-3'>
+      <Button type='button' className='btn my-3 btn-dark' onClick={() => history.goBack()}>
         Go Back
-      </Link>
+      </Button>
       <FormContainer>
         <h1>Edit Product</h1>
         {error && <Message variant='danger'>{error}</Message>}

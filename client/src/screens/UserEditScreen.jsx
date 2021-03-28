@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, updateUser } from '../state'
 import { USER_DETAILS_RESET, USER_UPDATE_RESET } from '../state/constants/userConstants'
-import { Link } from 'react-router-dom'
 import { FormContainer, Loader, Message, Meta } from '../components'
 import { Form, Button } from 'react-bootstrap'
 
@@ -59,9 +58,9 @@ export const UserEditScreen = ({ history, match }) => {
   return (
     <>
       <Meta title='Edit User' />
-      <Link to='/admin/users' className='btn my-3 btn-dark'>
+      <Button type='button' className='btn my-3 btn-dark' onClick={() => history.goBack()}>
         Go Back
-      </Link>
+      </Button>
       <FormContainer>
         <h1>Edit User</h1>
         {loadingUpdate && <Loader />}

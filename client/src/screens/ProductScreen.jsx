@@ -62,9 +62,9 @@ export const ProductScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link className='btn btn-dark my-3' to='/'>
+      <Button type='button' className='btn btn-dark my-3' onClick={() => history.goBack()}>
         Back
-      </Link>
+      </Button>
       {loading ? (
         <Loader />
       ) : error ? (

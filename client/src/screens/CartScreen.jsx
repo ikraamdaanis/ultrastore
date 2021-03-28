@@ -28,26 +28,31 @@ export const CartScreen = ({ match, location, history }) => {
   }
 
   return (
-    <Row>
+    <Row className='cart-screen'>
       <Meta title='Shopping Cart' />
       <Col md={8}>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Your cart is empty <Link to='/'>Go back</Link>
+            Your cart is empty.{' '}
+            <span className='go-back' onClick={() => history.goBack()}>
+              Go back
+            </span>
           </Message>
         ) : (
           <ListGroup>
             {cartItems.map(item => (
               <ListGroup.Item key={item.product}>
-                <Row>
+                <Row className='cart-item'>
                   <Col md={2}>
                     <Link to={`/product/${item.product}`}>
                       <Image src={item.image} alt={item.name} fluid rounded />{' '}
                     </Link>
                   </Col>
-                  <Col md={3}>
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                  <Col md={4}>
+                    <Link to={`/product/${item.product}`} className='cart-item-name'>
+                      {item.name}
+                    </Link>
                   </Col>
                   <Col md={2}>£{item.price.toFixed(2)}</Col>
                   <Col md={2}>

@@ -1,0 +1,12 @@
+.cart-screen {
+  .cart-item {
+    align-items: center;
+    color: rgb(20, 20, 20) !important;
+
+    &-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgb(40, 40, 40) !important;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+@import './pages/cartScreen';
 @import './pages/homeScreen';
 @import './pages/placeOrderScreen';
 @import './pages/productScreen';
@@ -89,4 +90,11 @@ select {
 
 .hide {
   display: none !important;
+}
+
+.go-back {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
