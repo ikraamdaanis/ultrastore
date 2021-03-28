@@ -59,6 +59,7 @@ export const OrderScreen = ({ match, history }) => {
   }, [history, userInfo, dispatch, order, orderId, successPay, successDeliver])
 
   const successPaymentHandler = paymentResult => {
+    console.log(paymentResult)
     dispatch(payOrder(orderId, paymentResult))
   }
 

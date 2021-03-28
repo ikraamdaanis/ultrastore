@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder, getUserOrders } from '../state'
-import { ORDER_PAY_RESET } from '../state/constants/orderConstants'
-import { Message, CheckoutSteps, Meta } from '../components'
+import { Message, CheckoutSteps, Meta, Loader } from '../components'
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { PayPalButton } from 'react-paypal-button-v2'
 
 export const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -24,10 +25,29 @@ export const PlaceOrderScreen = ({ history }) => {
   const orderCreate = useSelector(state => state.orderCreate)
   const { order, success, error } = orderCreate
 
+  const orderPay = useSelector(state => state.orderPay)
+  const { loading: loadingPay, success: successPay } = orderPay
+
+  const [sdkReady, setSdkReady] = useState(false)
+
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`)
-      dispatch({ type: ORDER_PAY_RESET })
+    }
+
+    const addPayPalScript = async () => {
+      const { data: clientId } = await axios.get('/api/config/paypal')
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.async = true
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
+      script.onload = () => setSdkReady(true)
+      document.body.appendChild(script)
+    }
+    if (!window.paypal) {
+      addPayPalScript()
+    } else {
+      setSdkReady(true)
     }
   }, [success, history, order, dispatch])
 
@@ -44,6 +64,11 @@ export const PlaceOrderScreen = ({ history }) => {
       })
     )
     dispatch(getUserOrders())
+  }
+
+  const successPaymentHandler = paymentResult => {
+    console.log(paymentResult)
+    // dispatch(payOrder(orderId, paymentResult))
   }
 
   return (
@@ -130,7 +155,26 @@ export const PlaceOrderScreen = ({ history }) => {
                   <Message variant='danger'>{error}</Message>
                 </ListGroup.Item>
               )}
-              <ListGroup.Item>
+              <ListGroup.Item className='paypal'>
+                {loadingPay && <Loader />}
+                {!sdkReady ? (
+                  <Loader />
+                ) : (
+                  <PayPalButton
+                    amount={totalPrice.toFixed(2)}
+                    onSuccess={successPaymentHandler}
+                    style={{
+                      size: 'small',
+                      color: 'gold',
+                      shape: 'pill',
+                      label: 'pay',
+                      layout: 'horizontal',
+                      tagline: false,
+                    }}
+                  />
+                )}
+              </ListGroup.Item>
+              {/* <ListGroup.Item>
                 <Button
                   type='button'
                   className='btn-block'
@@ -139,7 +183,7 @@ export const PlaceOrderScreen = ({ history }) => {
                 >
                   Place Order
                 </Button>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
             </ListGroup>
           </Card>
         </Col>
