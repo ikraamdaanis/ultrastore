@@ -34,14 +34,16 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  min-height: 80vh;
+}
+
 h1 {
   font-size: 2rem;
-  padding: 1rem 0;
 }
 
 h2 {
   font-size: 1.5rem;
-  padding: 0.5rem 0;
 }
 
 h1,
@@ -53,6 +55,7 @@ h6 {
   text-transform: unset !important;
   letter-spacing: 0px !important;
   font-weight: 700;
+  color: rgb(20, 20, 20) !important;
 }
 
 a {
@@ -74,14 +77,16 @@ button {
   cursor: pointer;
 }
 
+select {
+  border-radius: 0.25rem !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
 .btn {
-  border-radius: 3px !important;
+  border-radius: 0.25rem !important;
 }
 
 .hide {
   display: none !important;
-}
-
-main {
-  min-height: 80vh;
 }
