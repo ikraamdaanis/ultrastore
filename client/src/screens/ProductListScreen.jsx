@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { createProduct, deleteProduct, listProducts } from '../state'
-import { PRODUCT_CREATE_RESET } from '../state/constants/productConstants'
+import { PRODUCT_CREATE_RESET, PRODUCT_DELETE_RESET } from '../state/constants/productConstants'
 import { Loader, Message, Meta, Paginate } from '../components'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -39,7 +39,20 @@ export const ProductListScreen = ({ history, match }) => {
     } else {
       products?.length === 0 && dispatch(listProducts('', pageNumber, true))
     }
+
+    if (successDelete) {
+      dispatch(listProducts('', pageNumber, true))
+    }
+
+    if (!loading && !products.length) {
+      history.push(`/admin/products`)
+    }
+
+    return () => {
+      dispatch({ type: PRODUCT_DELETE_RESET })
+    }
   }, [
+    loading,
     dispatch,
     userInfo,
     history,
@@ -77,11 +90,9 @@ export const ProductListScreen = ({ history, match }) => {
           </Button>
         </Col>
       </Row>
-      {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
-      {loadingCreate && <Loader />}
       {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
-      {loading ? (
+      {loading || loadingCreate || loadingDelete ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>

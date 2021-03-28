@@ -21,6 +21,7 @@ import {
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_SUCCESS,
   PRODUCT_DELETE_FAIL,
+  PRODUCT_DELETE_RESET,
   PRODUCT_CREATE_REVIEW_REQUEST,
   PRODUCT_CREATE_REVIEW_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
@@ -77,7 +78,7 @@ export const productDetailsReducer = (state = { product: { reviews: [] } }, { ty
     case PRODUCT_DETAILS_FAIL:
       return { loading: false, error: payload }
     case PRODUCT_DETAILS_RESET:
-      return { loading: false, product: { reviews: [] } }
+      return { loading: true, product: { reviews: [] } }
     default:
       return state
   }
@@ -121,6 +122,8 @@ export const productDeleteReducer = (state = {}, { type, payload }) => {
       return { loading: false, success: true }
     case PRODUCT_DELETE_FAIL:
       return { loading: false, error: payload }
+    case PRODUCT_DELETE_RESET:
+      return {}
     default:
       return state
   }

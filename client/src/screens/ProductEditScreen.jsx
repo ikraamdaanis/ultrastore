@@ -16,7 +16,7 @@ export const ProductEditScreen = ({ history, match }) => {
   const { loading, error, product } = productDetails
 
   const productUpdate = useSelector(state => state.productUpdate)
-  const { loading: loadingUpdate, success: successUpdate, error: errorUpdate } = productUpdate
+  const { success: successUpdate, error: errorUpdate } = productUpdate
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
@@ -87,7 +87,7 @@ export const ProductEditScreen = ({ history, match }) => {
         description,
       })
     )
-    dispatch(listProducts())
+    dispatch(listProducts('', '', true))
   }
 
   return (
@@ -100,7 +100,7 @@ export const ProductEditScreen = ({ history, match }) => {
         <h1>Edit Product</h1>
         {error && <Message variant='danger'>{error}</Message>}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
-        {loading || loadingUpdate ? (
+        {loading ? (
           <Loader />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
