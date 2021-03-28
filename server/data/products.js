@@ -1,7 +1,7 @@
 export const products = [
   {
-    rating: 5,
-    numReviews: 1,
+    rating: 0,
+    numReviews: 0,
     price: 799,
     countInStock: 1000,
     name: 'iPhone 12',
@@ -13,8 +13,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 4.5,
-    numReviews: 2,
+    rating: 0,
+    numReviews: 0,
     price: 1999,
     countInStock: 500,
     name: 'iMac 27-inch',
@@ -26,8 +26,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 4.3,
-    numReviews: 10,
+    rating: 0,
+    numReviews: 0,
     price: 899,
     countInStock: 500,
     name: 'Samsung S20',
@@ -39,8 +39,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 5,
-    numReviews: 1,
+    rating: 0,
+    numReviews: 0,
     price: 1059.99,
     countInStock: 300,
     name: 'BenQ PD3220U',
@@ -52,8 +52,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 4,
-    numReviews: 6,
+    rating: 0,
+    numReviews: 0,
     price: 349.99,
     countInStock: 450,
     name: 'Sony WH-1000XM4',
@@ -65,8 +65,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 4.8,
-    numReviews: 12,
+    rating: 0,
+    numReviews: 0,
     price: 249,
     countInStock: 800,
     name: 'AirPods Pro ',
@@ -78,8 +78,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 5,
-    numReviews: 12,
+    rating: 0,
+    numReviews: 0,
     price: 429,
     countInStock: 350,
     name: 'Apple Watch',
@@ -91,8 +91,8 @@ export const products = [
     reviews: [],
   },
   {
-    rating: 3,
-    numReviews: 3,
+    rating: 0,
+    numReviews: 0,
     price: 299.99,
     countInStock: 250,
     name: 'Astro A50',
