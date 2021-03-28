@@ -44,20 +44,50 @@ header {
       text-transform: capitalize !important;
     }
 
+    .icon-wrapper {
+      display: inline-block;
+    }
+
     .icon-container {
       display: flex;
       align-items: center;
+
       .icon {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         margin-right: 0px;
-        width: 10px;
+        width: 20px;
+
+        i {
+          transform: translateY(-1px);
+        }
+
+        @media (max-width: 991px) {
+          width: 24px;
+        }
       }
     }
 
     .navbar-toggler {
       padding: 0;
       border: 0;
+    }
+
+    .dropdown-menu {
+      @media (max-width: 991px) {
+        background: unset;
+        border-radius: 0.25rem;
+        border: 1px solid rgb(68, 68, 68);
+
+        a {
+          color: #ececec !important;
+          transition: 0.2s ease-in-out;
+
+          &:hover {
+            background: rgb(77, 77, 77);
+          }
+        }
+      }
     }
   }
 }

@@ -29,16 +29,27 @@ export const Header = () => {
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i>Cart
+                  <span className='icon-wrapper'>
+                    <span className='icon-container'>
+                      <span className='icon'>
+                        <i className='fas fa-shopping-cart'></i>
+                      </span>
+                      <span className='profile-link'>Cart</span>
+                    </span>
+                  </span>
                 </Nav.Link>
               </LinkContainer>
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown
                   title={
-                    <>
-                      <i className='fas fa-user-lock'></i>
-                      <span className='profile-link'>Admin</span>
-                    </>
+                    <span className='icon-wrapper'>
+                      <span className='icon-container'>
+                        <span className='icon'>
+                          <i className='fas fa-user-lock'></i>
+                        </span>
+                        <span className='profile-link'>Admin</span>
+                      </span>
+                    </span>
                   }
                   id='admin'
                 >
@@ -77,10 +88,14 @@ export const Header = () => {
               {userInfo ? (
                 <NavDropdown
                   title={
-                    <>
-                      <i className='fas fa-user'></i>
-                      <span>{userInfo.name}</span>
-                    </>
+                    <span className='icon-wrapper'>
+                      <span className='icon-container'>
+                        <span className='icon'>
+                          <i className='fas fa-user'></i>
+                        </span>
+                        <span className='profile-link'>{userInfo.name}</span>
+                      </span>
+                    </span>
                   }
                   id='username'
                 >
