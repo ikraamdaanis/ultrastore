@@ -15,18 +15,7 @@
 }
 
 .add-to-cart {
-  background: #0071e3;
-  font-size: 17px;
-  line-height: 1.17648;
-  font-weight: 400;
-  text-transform: capitalize;
-  letter-spacing: -0.022em;
-  border-radius: 8px;
-  transition: 0.2s ease-in-out;
-
-  &:hover {
-    background: #0077ed;
-  }
+  height: 48px;
 }
 
 .image {
@@ -34,5 +23,29 @@
     overflow: hidden;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.125);
+  }
+}
+
+.reviews {
+  margin-top: 2rem;
+
+  .review {
+    padding: 0;
+    margin-bottom: 1rem;
+
+    &-name {
+      font-size: 16px;
+      color: #363636;
+      margin: 0;
+    }
+
+    &-date {
+      color: #565659;
+      font-size: 13px;
+    }
+
+    &-comment {
+      color: #363636;
+    }
   }
 }

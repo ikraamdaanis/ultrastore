@@ -5,8 +5,22 @@
 
     &-name {
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 400;
       color: rgb(40, 40, 40) !important;
+    }
+  }
+
+  .trash {
+    width: 100%;
+    text-align: center;
+    color: #06c;
+    font-size: 14px;
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

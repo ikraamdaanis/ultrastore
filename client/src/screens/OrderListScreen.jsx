@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { format } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsersOrders } from '../state'
 import { ORDER_ALL_USERS_RESET } from '../state/constants/orderConstants'
@@ -59,19 +60,19 @@ export const OrderListScreen = ({ history }) => {
                     <span>{order._id}</span>
                   </LinkContainer>
                 </td>
-                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>{format(new Date(order.createdAt), 'dd/MM/yyyy')}</td>
                 <td>{order.user.name}</td>
                 <td>£{order.totalPrice.toFixed(2)}</td>
                 <td>
                   {order.isPaid ? (
-                    order.paidAt.substring(0, 10)
+                    format(new Date(order.paidAt), 'dd/MM/yyyy')
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
+                    format(new Date(order.deliveredAt), 'dd/MM/yyyy')
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}

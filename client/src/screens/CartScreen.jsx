@@ -67,9 +67,13 @@ export const CartScreen = ({ match, location, history }) => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button type='button' onClick={() => removeFromCartHandler(item.product)}>
-                      <i className='fas fa-trash'></i>
-                    </Button>
+                    <span
+                      className='trash'
+                      type='button'
+                      onClick={() => removeFromCartHandler(item.product)}
+                    >
+                      Remove
+                    </span>
                   </Col>
                 </Row>
               </ListGroup.Item>

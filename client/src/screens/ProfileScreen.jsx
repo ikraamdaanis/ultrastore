@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { format } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserOrders, updateUserProfile } from '../state'
 import { USER_UPDATE_PROFILE_RESET } from '../state/constants/userConstants'
@@ -128,18 +129,18 @@ export const ProfileScreen = ({ history }) => {
               {orders.map(order => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>{format(new Date(order.createdAt), 'do MMMM yyyy')}</td>
                   <td>£{order.totalPrice.toFixed(2)}</td>
                   <td>
                     {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                      format(new Date(order.paidAt), 'dd/MM/yyyy')
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
                   <td>
                     {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
+                      format(new Date(order.paidAt), 'dd/MM/yyyy')
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}

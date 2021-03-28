@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { format } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, clearProductDetails, createProductReview, listProductDetails } from '../state'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../state/constants/productConstants'
@@ -144,15 +145,17 @@ export const ProductScreen = ({ match, history }) => {
               {product.reviews.length === 0 ? (
                 <Message>No reviews</Message>
               ) : (
-                <ListGroup variant='flush'>
+                <ListGroup variant='flush' className='reviews'>
                   {product.reviews.map(review => (
-                    <ListGroup.Item key={review._id}>
-                      <p>
+                    <ListGroup.Item key={review._id} className='review'>
+                      <p className='review-name'>
                         <strong>{review.name}</strong>
                       </p>
                       <Rating value={review.rating} />
-                      <p>{review.createdAt.substring(0, 10)}</p>
-                      <p>{review.comment}</p>
+                      <p className='review-date'>
+                        Reviewed on {format(new Date(review.createdAt), 'do MMMM yyyy')}
+                      </p>
+                      <p className='review-comment'>{review.comment}</p>
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
