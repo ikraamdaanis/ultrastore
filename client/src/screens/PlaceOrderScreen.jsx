@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { createOrder, getUserOrders } from '../state'
+import { ORDER_CREATE_RESET } from '../state/constants/orderConstants'
 import { Message, CheckoutSteps, Meta, Loader } from '../components'
-import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { PayPalButton } from 'react-paypal-button-v2'
@@ -24,9 +25,6 @@ export const PlaceOrderScreen = ({ history }) => {
 
   const orderCreate = useSelector(state => state.orderCreate)
   const { order, success, error } = orderCreate
-
-  const orderPay = useSelector(state => state.orderPay)
-  const { loading: loadingPay, success: successPay } = orderPay
 
   const [sdkReady, setSdkReady] = useState(false)
 
@@ -49,9 +47,11 @@ export const PlaceOrderScreen = ({ history }) => {
     } else {
       setSdkReady(true)
     }
+
+    return () => dispatch({ type: ORDER_CREATE_RESET })
   }, [success, history, order, dispatch])
 
-  const placeOrderHandler = () => {
+  const placeOrderHandler = paymentResult => {
     dispatch(
       createOrder({
         orderItems: cartItems,
@@ -61,14 +61,17 @@ export const PlaceOrderScreen = ({ history }) => {
         taxPrice,
         shippingPrice,
         totalPrice,
+        isPaid: true,
+        paidAt: Date.now(),
+        paymentResult: {
+          id: paymentResult.id,
+          status: paymentResult.status,
+          update_time: paymentResult.update_time,
+          email_address: paymentResult.payer.email_address,
+        },
       })
     )
     dispatch(getUserOrders())
-  }
-
-  const successPaymentHandler = paymentResult => {
-    console.log(paymentResult)
-    // dispatch(payOrder(orderId, paymentResult))
   }
 
   return (
@@ -156,13 +159,12 @@ export const PlaceOrderScreen = ({ history }) => {
                 </ListGroup.Item>
               )}
               <ListGroup.Item className='paypal'>
-                {loadingPay && <Loader />}
                 {!sdkReady ? (
                   <Loader />
                 ) : (
                   <PayPalButton
                     amount={totalPrice.toFixed(2)}
-                    onSuccess={successPaymentHandler}
+                    onSuccess={placeOrderHandler}
                     style={{
                       size: 'small',
                       color: 'gold',
@@ -174,16 +176,6 @@ export const PlaceOrderScreen = ({ history }) => {
                   />
                 )}
               </ListGroup.Item>
-              {/* <ListGroup.Item>
-                <Button
-                  type='button'
-                  className='btn-block'
-                  disabled={cartItems.length === 0}
-                  onClick={placeOrderHandler}
-                >
-                  Place Order
-                </Button>
-              </ListGroup.Item> */}
             </ListGroup>
           </Card>
         </Col>

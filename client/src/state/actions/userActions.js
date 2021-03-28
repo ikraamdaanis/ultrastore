@@ -31,7 +31,6 @@ import {
   ORDER_CREATE_RESET,
   ORDER_DELIVER_RESET,
   ORDER_DETAILS_RESET,
-  ORDER_PAY_RESET,
   ORDER_USER_RESET,
 } from '../constants/orderConstants'
 import { PRODUCT_LIST_ADMIN_RESET, PRODUCT_UPDATE_RESET } from '../constants/productConstants'
@@ -93,7 +92,6 @@ export const logout = () => dispatch => {
   dispatch({ type: USER_LIST_RESET })
   dispatch({ type: ORDER_CREATE_RESET })
   dispatch({ type: ORDER_DETAILS_RESET })
-  dispatch({ type: ORDER_PAY_RESET })
   dispatch({ type: ORDER_ALL_USERS_RESET })
   dispatch({ type: ORDER_DELIVER_RESET })
   dispatch({ type: ORDER_USER_RESET })
