@@ -22,7 +22,7 @@ export const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/' style={{ cursor: 'pointer' }}>
-            <h3>UltraStore</h3>
+            <h3 className='logo'>UltraStore</h3>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
