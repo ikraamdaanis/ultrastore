@@ -1,15 +1,21 @@
 header {
-  i {
-    margin-right: 5px;
-  }
-  .icon-container {
-    display: flex;
-    align-items: center;
-    .icon {
+  .navbar {
+    background: rgba(0, 0, 0, 0.8) !important;
+    i {
+      margin-right: 5px;
+    }
+    .nav-item {
+      margin-right: 0;
+    }
+    .icon-container {
       display: flex;
-      justify-content: flex-end;
-      margin-right: 0px;
-      width: 10px;
+      align-items: center;
+      .icon {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 0px;
+        width: 10px;
+      }
     }
   }
 }
