@@ -30,38 +30,26 @@ export const ProductListScreen = ({ history, match }) => {
   const { loading: loadingDelete, success: successDelete, error: errorDelete } = productDelete
 
   useEffect(() => {
-    dispatch({ type: PRODUCT_CREATE_RESET })
     if (!userInfo) return history.push('/login')
     if (!userInfo.isAdmin) return history.push('/')
+  }, [userInfo, history])
 
-    if (successCreate) {
-      history.push(`/admin/products/${createdProduct._id}/edit`)
-    } else {
-      products?.length === 0 && dispatch(listProducts('', pageNumber, true))
-    }
+  useEffect(() => {
+    products?.length === 0 && dispatch(listProducts('', pageNumber, true))
+  }, [products, dispatch, pageNumber])
 
-    if (successDelete) {
-      dispatch(listProducts('', pageNumber, true))
-    }
-
-    if (!loading && !products.length) {
-      history.push(`/admin/products`)
-    }
-
+  useEffect(() => {
+    if (successCreate) return history.push(`/admin/products/${createdProduct._id}/edit`)
+    if (successDelete) dispatch(listProducts('', pageNumber, true))
     return () => {
-      dispatch({ type: PRODUCT_DELETE_RESET })
+      successDelete && dispatch({ type: PRODUCT_DELETE_RESET })
     }
-  }, [
-    loading,
-    dispatch,
-    userInfo,
-    history,
-    successDelete,
-    successCreate,
-    createdProduct,
-    products,
-    pageNumber,
-  ])
+  }, [successCreate, successDelete, history, dispatch, createdProduct, pageNumber])
+
+  useEffect(() => {
+    createdProduct && dispatch({ type: PRODUCT_CREATE_RESET })
+    if (!loading && !products.length) return history.push(`/admin/products`)
+  }, [loading, dispatch, history, createdProduct, products])
 
   useEffect(() => {
     if (pageNumber) dispatch(listProducts('', pageNumber, true))
