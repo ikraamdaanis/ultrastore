@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearProductDetails, listProductDetails, listProducts, updateProduct } from '../state'
+import { listProductDetails, listProducts, updateProduct } from '../state'
 import { PRODUCT_UPDATE_RESET } from '../state/constants/productConstants'
 import { Link } from 'react-router-dom'
 import { FormContainer, Loader, Message, Meta } from '../components'
@@ -38,7 +38,6 @@ export const ProductEditScreen = ({ history, match }) => {
     if (!userInfo) return history.push('/login')
     if (!userInfo.isAdmin) return history.push('/')
     if (!product || product._id !== productId) {
-      dispatch(clearProductDetails())
       dispatch(listProductDetails(productId))
     } else {
       setName(product.name)
