@@ -69,7 +69,8 @@ export const productListAdminReducer = (
   }
 }
 
-export const productDetailsReducer = (state = { product: { reviews: [] } }, { type, payload }) => {
+const productDetailsDefaultState = { loading: true, product: { reviews: [] } }
+export const productDetailsReducer = (state = productDetailsDefaultState, { type, payload }) => {
   switch (type) {
     case PRODUCT_DETAILS_REQUEST:
       return { loading: true }
@@ -78,7 +79,7 @@ export const productDetailsReducer = (state = { product: { reviews: [] } }, { ty
     case PRODUCT_DETAILS_FAIL:
       return { loading: false, error: payload }
     case PRODUCT_DETAILS_RESET:
-      return { loading: true, product: { reviews: [] } }
+      return productDetailsDefaultState
     default:
       return state
   }
