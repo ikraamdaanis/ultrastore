@@ -20,16 +20,14 @@ export const ProfileScreen = ({ history }) => {
   const { loading: loadingOrders, orders, error: errorOrders } = orderUser
 
   useEffect(() => {
-    dispatch(getUserOrders())
-  }, [dispatch, userInfo])
-
-  useEffect(() => {
     !userInfo && history.push('/login')
     if (userInfo?.name) {
       setName(userInfo.name)
       setEmail(userInfo.email)
     }
-  }, [dispatch, history, userInfo])
+
+    !orders.length && dispatch(getUserOrders())
+  }, [dispatch, history, userInfo, orders])
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

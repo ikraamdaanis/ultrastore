@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { createOrder } from '../state'
+import { createOrder, getUserOrders } from '../state'
 import { ORDER_PAY_RESET } from '../state/constants/orderConstants'
 import { Message, CheckoutSteps, Meta } from '../components'
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
@@ -43,6 +43,7 @@ export const PlaceOrderScreen = ({ history }) => {
         totalPrice,
       })
     )
+    dispatch(getUserOrders())
   }
 
   return (

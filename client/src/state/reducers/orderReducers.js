@@ -127,24 +127,29 @@ export const orderDeliverReducer = (state = {}, { type, payload }) => {
   }
 }
 
-export const orderUserReducer = (state = { orders: [] }, { type, payload }) => {
+const orderUserDefaultState = { loading: true, orders: [], error: null }
+export const orderUserReducer = (state = orderUserDefaultState, { type, payload }) => {
   switch (type) {
     case ORDER_USER_REQUEST:
       return {
+        ...state,
         loading: true,
       }
     case ORDER_USER_SUCCESS:
       return {
+        ...state,
         loading: false,
         orders: payload,
       }
     case ORDER_USER_FAIL:
       return {
+        ...state,
         loading: false,
         error: payload,
+        orders: [],
       }
     case ORDER_USER_RESET:
-      return { orders: [] }
+      return orderUserDefaultState
     default:
       return state
   }
