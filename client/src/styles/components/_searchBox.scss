@@ -21,7 +21,7 @@
 .search-input,
 .search-button {
   height: var(--height-btn);
-
+  font-family: 'Open Sans', sans-serif;
   border: 0;
   color: var(--color-dark-btn);
   font-size: 1rem;
@@ -30,7 +30,7 @@
 .search-input[type='search'] {
   outline: 0;
   width: 100%;
-
+  font-family: 'Open Sans', sans-serif;
   background: var(--color-light-btn);
   padding: 0 1.6rem;
   border-radius: var(--radius);
@@ -42,7 +42,7 @@
   position: relative;
 
   &::placeholder {
-    font-weight: 600;
+    font-weight: 400;
   }
 }
 

@@ -30,13 +30,13 @@ export const HomeScreen = ({ match }) => {
   return (
     <>
       <Meta title='Welcome to UltraStore' />
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className='home-title'>
         {keyword ? (
           <Link className='btn btn-dark my-3' to='/'>
             Back
           </Link>
         ) : (
-          <h1>Latest Products</h1>
+          <h1 className='title'>Latest Products</h1>
         )}
         <SearchBox />
       </div>
