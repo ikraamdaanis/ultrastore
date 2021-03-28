@@ -73,7 +73,7 @@ export const ProductScreen = ({ match, history }) => {
         <>
           <Meta title={product.name} description={product.description} />
           <Row>
-            <Col md={7}>
+            <Col md={7} className='image'>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={5}>
