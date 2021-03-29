@@ -26,7 +26,7 @@ export const ProfileScreen = ({ history }) => {
       setName(userInfo.name)
       setEmail(userInfo.email)
     }
-
+    if (orders === 'No orders') return
     !orders.length && dispatch(getUserOrders())
   }, [dispatch, history, userInfo, orders])
 
@@ -109,7 +109,9 @@ export const ProfileScreen = ({ history }) => {
       </Col>
       <Col md={9}>
         <h3>My Orders</h3>
-        {loadingOrders ? (
+        {orders === 'No orders' ? (
+          <Message>You have no orders</Message>
+        ) : loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>

@@ -85,20 +85,14 @@ select {
 }
 
 .btn {
-  padding: 0.5rem 1.5rem;
   border-radius: 0.25rem !important;
   box-shadow: none !important;
   transition: 0.2s ease-in-out;
-  background: #0071e3;
   font-size: 17px;
   line-height: 1.17648;
   font-weight: 400;
   text-transform: capitalize;
   letter-spacing: -0.022em;
-  background-color: #0070c9;
-  background: linear-gradient(#42a1ec, #0070c9);
-  border-color: unset !important;
-  border: 1px solid #07c;
 
   &:hover {
     filter: brightness(1.1);

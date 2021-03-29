@@ -115,7 +115,7 @@ export const getUserOrders = () => async (dispatch, getState) => {
 
     const { data } = await axios.get(`/api/orders/myorders`, config)
 
-    dispatch({ type: ORDER_USER_SUCCESS, payload: data })
+    dispatch({ type: ORDER_USER_SUCCESS, payload: data.length ? data : 'No orders' })
   } catch (error) {
     dispatch({
       type: ORDER_USER_FAIL,
