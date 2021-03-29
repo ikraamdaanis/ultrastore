@@ -62,7 +62,7 @@ export const ProductScreen = ({ match, history }) => {
   }
 
   return (
-    <>
+    <div className='product-screen'>
       <Button type='button' className='btn btn-dark my-3' onClick={() => history.goBack()}>
         Back
       </Button>
@@ -74,7 +74,7 @@ export const ProductScreen = ({ match, history }) => {
         <>
           <Meta title={product.name} description={product.description} />
           <Row>
-            <Col md={7} className='image'>
+            <Col md={7} className='product-screen-image'>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={5}>
@@ -200,7 +200,7 @@ export const ProductScreen = ({ match, history }) => {
           </Row>
         </>
       )}
-    </>
+    </div>
   )
 }
 
