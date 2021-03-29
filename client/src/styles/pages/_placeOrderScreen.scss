@@ -1,6 +1,31 @@
-.paypal {
-  min-height: 70px;
-  div {
-    display: flex;
+.place-order-screen {
+  &-list {
+    &-item {
+      display: flex;
+      align-items: center;
+
+      .item-image-container {
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .item-image {
+        @media (max-width: 768px) {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .item-price {
+    font-weight: 600;
+  }
+
+  .paypal {
+    div {
+      display: flex;
+      align-items: center;
+    }
   }
 }

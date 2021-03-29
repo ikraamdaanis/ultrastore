@@ -75,7 +75,7 @@ export const PlaceOrderScreen = ({ history }) => {
   }
 
   return (
-    <>
+    <div className='place-order-screen'>
       <Meta title='Place Order' />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
@@ -101,19 +101,27 @@ export const PlaceOrderScreen = ({ history }) => {
               {cartItems.length === 0 ? (
                 <Message>Your cart is empty</Message>
               ) : (
-                <ListGroup variant='flush'>
+                <ListGroup variant='flush' className='place-order-screen-list'>
                   {cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
-                      <Row>
-                        <Col md={1}>
-                          <Image src={item.image} rounded fluid alt={item.name} />
+                      <Row className='place-order-screen-list-item'>
+                        <Col md={2} className='item-image-container'>
+                          <Image
+                            src={item.image}
+                            rounded
+                            fluid
+                            alt={item.name}
+                            className='item-image'
+                          />
                         </Col>
                         <Col>
                           <Link to={`/product/${item.product}`}>{item.name}</Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x £{item.price.toFixed(2)} = £
-                          {(item.qty * item.price).toFixed(2)}
+                          {item.qty} x £{item.price.toFixed(2)} ={' '}
+                          <strong className='item-price'>
+                            £{(item.qty * item.price).toFixed(2)}
+                          </strong>
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -150,7 +158,9 @@ export const PlaceOrderScreen = ({ history }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>£{totalPrice.toFixed(2)}</Col>
+                  <Col>
+                    <strong className='item-price'>£{totalPrice.toFixed(2)}</strong>
+                  </Col>
                 </Row>
               </ListGroup.Item>
               {error && (
@@ -180,7 +190,7 @@ export const PlaceOrderScreen = ({ history }) => {
           </Card>
         </Col>
       </Row>
-    </>
+    </div>
   )
 }
 
