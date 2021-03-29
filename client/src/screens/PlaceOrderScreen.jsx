@@ -106,13 +106,15 @@ export const PlaceOrderScreen = ({ history }) => {
                     <ListGroup.Item key={index}>
                       <Row className='place-order-screen-list-item'>
                         <Col md={2} className='item-image-container'>
-                          <Image
-                            src={item.image}
-                            rounded
-                            fluid
-                            alt={item.name}
-                            className='item-image'
-                          />
+                          <Link to={`/product/${item.product}`}>
+                            <Image
+                              src={item.image}
+                              rounded
+                              fluid
+                              alt={item.name}
+                              className='item-image'
+                            />
+                          </Link>
                         </Col>
                         <Col>
                           <Link to={`/product/${item.product}`}>{item.name}</Link>
