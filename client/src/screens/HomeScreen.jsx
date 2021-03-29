@@ -28,15 +28,15 @@ export const HomeScreen = ({ match }) => {
   }, [dispatch, keyword, pageNumber])
 
   return (
-    <>
+    <div className='home-screen'>
       <Meta title='Welcome to UltraStore' />
-      <div className='home-title'>
+      <div className='home-screen-title'>
         {keyword ? (
           <Link className='btn btn-dark my-3' to='/'>
             Back
           </Link>
         ) : (
-          <h1 className='title'>Latest Products</h1>
+          <h1 className='home-screen-title-heading'>Latest Products</h1>
         )}
         <SearchBox />
       </div>
@@ -56,7 +56,7 @@ export const HomeScreen = ({ match }) => {
           <Paginate pages={pages} page={page} />
         </>
       )}
-    </>
+    </div>
   )
 }
 
