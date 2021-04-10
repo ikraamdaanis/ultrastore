@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../state'
+import { loginAsGuest, register } from '../state'
 import { Link } from 'react-router-dom'
 import { FormContainer, Message, Meta } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
@@ -11,12 +11,15 @@ export const RegisterScreen = ({ history, location }) => {
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
   const userRegister = useSelector(state => state.userRegister)
-  const { loading, error, userInfo } = userRegister
+  const { loading, error, userInfo: registered } = userRegister
 
   useEffect(() => {
-    userInfo && history.push(redirect)
-  }, [history, userInfo, redirect])
+    if (userInfo || registered) history.push(redirect)
+  }, [history, userInfo, redirect, registered])
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -32,6 +35,10 @@ export const RegisterScreen = ({ history, location }) => {
       setMessage(null)
       dispatch(register(name, email, password))
     }
+  }
+
+  const handleClick = () => {
+    dispatch(loginAsGuest())
   }
 
   return (
@@ -83,6 +90,14 @@ export const RegisterScreen = ({ history, location }) => {
         </Form.Group>
         <Button type='submit' variant='primary'>
           {loading ? 'Registering...' : 'Register'}
+        </Button>
+        <Button
+          type='button'
+          variant='primary'
+          onClick={handleClick}
+          style={{ marginLeft: '1rem' }}
+        >
+          Sign In as a guest
         </Button>
       </Form>
       <Row className='py-3'>

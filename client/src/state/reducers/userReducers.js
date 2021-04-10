@@ -28,7 +28,7 @@ import {
   USER_DELETE_RESET,
 } from '../constants/userConstants'
 
-const userLoginDefaultState = { loading: true, userInfo: null, error: null }
+const userLoginDefaultState = { userInfo: null, error: null }
 export const userLoginReducer = (state = userLoginDefaultState, { type, payload }) => {
   switch (type) {
     case USER_LOGIN_REQUEST:
@@ -44,7 +44,7 @@ export const userLoginReducer = (state = userLoginDefaultState, { type, payload 
   }
 }
 
-const userRegisterDefaultState = { loading: true, userInfo: null, error: null }
+const userRegisterDefaultState = { userInfo: null, error: null }
 export const userRegisterReducer = (state = userRegisterDefaultState, { type, payload }) => {
   switch (type) {
     case USER_REGISTER_REQUEST:

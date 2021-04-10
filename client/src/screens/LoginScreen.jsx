@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../state'
+import { login, loginAsGuest } from '../state'
 import { Link } from 'react-router-dom'
 import { FormContainer, Message, Meta } from '../components'
 import { Form, Button, Row, Col } from 'react-bootstrap'
@@ -24,6 +24,10 @@ export const LoginScreen = ({ history, location }) => {
   const submitHandler = event => {
     event.preventDefault()
     dispatch(login(email, password))
+  }
+
+  const handleClick = () => {
+    dispatch(loginAsGuest())
   }
 
   return (
@@ -52,6 +56,14 @@ export const LoginScreen = ({ history, location }) => {
         </Form.Group>
         <Button type='submit' variant='primary'>
           {loading ? 'Signing in...' : 'Sign In'}
+        </Button>
+        <Button
+          type='button'
+          variant='primary'
+          onClick={handleClick}
+          style={{ marginLeft: '1rem' }}
+        >
+          {loading ? 'Signing in...' : 'Sign In as a guest'}
         </Button>
       </Form>
       <Row className='py-3'>

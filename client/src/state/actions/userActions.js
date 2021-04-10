@@ -84,6 +84,10 @@ export const login = (email, password) => async dispatch => {
   }
 }
 
+export const loginAsGuest = () => dispatch => {
+  dispatch(login(process.env.REACT_APP_EMAIL, process.env.REACT_APP_PASSWORD))
+}
+
 export const logout = () => dispatch => {
   localStorage.removeItem('userInfo')
   dispatch({ type: USER_LOGOUT })
