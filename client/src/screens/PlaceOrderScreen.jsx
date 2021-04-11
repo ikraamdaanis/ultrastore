@@ -170,6 +170,17 @@ export const PlaceOrderScreen = ({ history }) => {
                   <Message variant='danger'>{error}</Message>
                 </ListGroup.Item>
               )}
+              <ListGroup.Item>
+                <div className='credentials'>
+                  <p>Use the following PayPal Sandbox credentials:</p>
+                  <p>
+                    Email: <strong>john@ultrastore.com</strong>
+                  </p>
+                  <p>
+                    Password: <strong>ultrastore</strong>
+                  </p>
+                </div>
+              </ListGroup.Item>
               <ListGroup.Item className='paypal'>
                 {!sdkReady ? (
                   <Loader />
